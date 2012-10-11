@@ -1,0 +1,1 @@
+DELETE FROM configuration WHERE configuration_key='FEC_CHECKOUT_CONFIRMATION_TEXT_SWITCH';
