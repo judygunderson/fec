@@ -10,7 +10,7 @@
                                                             
 $loaders[] = array('conditions' => array('pages' => array(FILENAME_CREATE_ACCOUNT, FILENAME_LOGIN, FILENAME_NO_ACCOUNT)),
 										'jscript_files' => array(
-										  'jquery/jquery-1.8.1.min.js' => 1,
+										  'jquery/jquery-1.8.3.min.js' => 1,
                       'jquery/jquery_create_account.js' => 2,
                       'jquery/jquery_addr_pulldowns.php' => 3,
                       'jquery/jquery_form_check.php' => 4										

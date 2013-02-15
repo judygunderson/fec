@@ -10,7 +10,7 @@
                                                             
 $loaders[] = array('conditions' => array('pages' => array(FILENAME_FEC_CONFIRMATION)),
 										'jscript_files' => array(
-										  'jquery/jquery-1.8.1.min.js' => 1,
+										  'jquery/jquery-1.8.3.min.js' => 1,
                       'jquery/jquery_fec_confirmation.php' => 2										
                     )
 								);  
