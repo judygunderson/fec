@@ -110,7 +110,7 @@
         <?php echo $field['field']; ?> 
       <?php } ?>
       <?php   if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-        <div class="buttonRow"><?php echo zen_image(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
+        <div class="buttonRow"><?php echo zen_image_submit(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
       <?php   } ?>
       </div> 
     </fieldset>
@@ -146,7 +146,7 @@
       <label class="inputLabel"<?php echo ($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>      
       <?php   echo $selection[$i]['fields'][$j]['field']; ?>
       <?php   if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-      <div class="buttonRow"><?php echo zen_image(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
+      <div class="buttonRow"><?php echo zen_image_submit(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
       <?php   } ?>  
     </div>
     </fieldset>

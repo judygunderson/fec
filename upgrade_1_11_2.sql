@@ -1,0 +1,1 @@
+UPDATE configuration SET configuration_value = '1.11.2' WHERE configuration_key = 'FAST_AND_EASY_CHECKOUT_VERSION' LIMIT 1;
