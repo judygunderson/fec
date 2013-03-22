@@ -253,7 +253,7 @@
 <br class="clearBoth" />
 <?php echo zen_draw_radio_field('email_format', 'HTML', ($_SESSION['email_format'] == 'HTML' ? true : false),'id="email-format-html"') . '<label class="radioButtonLabel" for="email-format-html">' . ENTRY_EMAIL_HTML_DISPLAY . '</label>' .  zen_draw_radio_field('email_format', 'TEXT', ($_SESSION['email_format'] == 'TEXT' ? true : false), 'id="email-format-text"') . '<label class="radioButtonLabel" for="email-format-text">' . ENTRY_EMAIL_TEXT_DISPLAY . '</label>'; ?>
 <?php } else { ?>
-<input type="hidden" name="email_format" value="TEXT" checked="checked" id="email-format-text" />
+<input type="hidden" name="email_format" value="<?php echo (ACCOUNT_EMAIL_PREFERENCE == '1' ? 'HTML' : 'TEXT'); ?>" />
 <?php } ?>
 <!-- END CHECKOUT WITHOUT ACCOUNT -->
 <?php
