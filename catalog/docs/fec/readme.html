@@ -330,7 +330,7 @@ $new_fields=', c.customers_telephone, a.entry_company, a.entry_street_address, a
                 Find:
                 <div class="code">
                   <div class="codeTitle"><strong>Code:</strong> <span class="select">SELECT ALL</span></div>
-<pre class="sh_php"><code>$html_msg['EMAIL_TEXT_INVOICE_URL']  = '&lt;a href=&quot;' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') .'&quot;&gt;'.str_replace(':','',EMAIL_TEXT_INVOICE_URL).'&lt;/a&gt;';</code></pre>
+<pre class="sh_php"><code>            $html_msg['EMAIL_TEXT_INVOICE_URL']  = '&lt;a href=&quot;' . zen_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id=' . $oID, 'SSL') .'&quot;&gt;'.str_replace(':','',EMAIL_TEXT_INVOICE_URL).'&lt;/a&gt;';</code></pre>
                 </div>
                 Replace with:
                 <div class="code">
