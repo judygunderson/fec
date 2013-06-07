@@ -1,15 +1,13 @@
 <div class="fec-container">
-  <!-- <span class="fec-page-step">
-      Checkout - step 2 / 2
-  </span> -->
+
   <!-- BOF SHOPPING CART -->
   <?php
-      // following used for setting style type of order total and discount modules only
-      $selection =  $order_total_modules->credit_selection();
-      $numselection = sizeof($selection);
-      if (FEC_SPLIT_CHECKOUT == 'true') {
-          $selectionStyle = ($numselection%2 == 0 ? 'split' : '');
-      }
+  // following used for setting style type of order total and discount modules only
+    $selection =  $order_total_modules->credit_selection();
+    $numselection = sizeof($selection);
+    if (FEC_SPLIT_CHECKOUT == 'true') {
+      $selectionStyle = ($numselection%2 == 0 ? 'split' : '');
+    }
   ?>
   
   <div id="checkoutOrderForm">
@@ -17,7 +15,7 @@
           <legend><?php echo TABLE_HEADING_SHOPPING_CART; ?></legend>
           <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_SHOPPING_CART; ?></span>
           
-          <div class="buttonRow forward fec-edit-button" id="editButton"><?php echo '<a href="' . zen_href_link(FILENAME_SHOPPING_CART, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT) . '</a>'; ?></div>
+          <div class="buttonRow forward" id="editButton"><?php echo '<a href="' . zen_href_link(FILENAME_SHOPPING_CART, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT) . '</a>'; ?></div>
           
           <?php 
               if ($flagAnyOutOfStock) {
@@ -85,9 +83,6 @@
   
   <!-- EOF SHOPPING CART -->
   
-  <div class="fec-fieldset fec-order-options">
-      <span class="fec-fieldset-legend">Order Options</span>
-      <div>
   <?php
       // GOOGLE CHECKOUT
       foreach($payment_modules->modules as $pm_code => $pm) {
@@ -112,8 +107,8 @@
       }
   ?>
   
-  
-      <fieldset class="fec-discount">
+  <div class="discountForm <?php echo $selectionStyle; ?> discount<?php echo $box; ?>">
+      <fieldset class="fec-discount fec-fieldset">
           <legend><?php echo $selection[$i]['module']; ?></legend>
           <span class="fec-fieldset-legend-two"><?php echo $selection[$i]['module']; ?></span>
           
@@ -125,8 +120,8 @@
           
           <div class="fec-field-inline">
               <?php foreach ($selection[$i]['fields'] as $field) { ?>
-                  <?php echo $field['field']; ?> 
                   <label class="inputLabel"<?php echo ($field['tag']) ? ' for="'.$field['field']['tag'].'"': ''; ?>><?php echo $field['title']; ?></label>      
+                  <?php echo $field['field']; ?> 
               <?php } ?>
               <?php
                   if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
@@ -134,6 +129,7 @@
               <?php } ?>
           </div> 
       </fieldset>
+  </div>
 
   <!--  
   <?php
@@ -179,94 +175,8 @@
   
   <?php
     }
-  ?>  
-
-      <!-- bof Gift Wrap -->
-      <?php 
-        if (FEC_GIFT_WRAPPING_SWITCH == 'true') {
-          if (!file_exists(DIR_WS_MODULES . "order_total/ot_giftwrap_checkout.php")) {
-            echo '<font color="red"><strong>GIFTWRAP MODULE NOT INSTALLED, PLEASE DISABLE IN FEC CONFIGURATION</strong></font>';
-          } else {     
-      ?>
-      <?php
-         $value = "ot_giftwrap_checkout.php"; 
-         include_once(zen_get_file_directory(DIR_WS_LANGUAGES . $_SESSION['language'] .
-                '/modules/order_total/', $value, 'false'));
-         include_once(DIR_WS_MODULES . "order_total/" . $value);
-         $wrap_mod = new ot_giftwrap_checkout(); 
-         $use_gift_wrap = true;
-         if ($wrap_mod->check()) {
-      ?>
-            <fieldset class="fec-table-items fec-table-gifts" id="gift_wrap">
-                <legend><?php echo GIFT_WRAP_HEADING; ?></legend>
-                <span class="fec-fieldset-legend-two"><?php echo GIFT_WRAP_HEADING; ?></span>
-            <?php
-                echo '<div id="cartWrapExplain">'; 
-                echo '    <a href="javascript:alert(\'' . GIFT_WRAP_EXPLAIN_DETAILS . '\')">' . GIFT_WRAP_EXPLAIN_LINK . '</a>';
-                echo '</div>'; 
-            ?>
-            <!-- <table>
-                <tr>
-                    <th scope="col" id="ccWrapProductsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
-                    <th scope="col" id="ccWrapHeading"><?php echo GIFT_WRAP_CHECKOFF; ?></th>
-                </tr> -->
-      <?php  
-             // now loop thru all products to display quantity and price
-         $prod_count = 1; 
-      // tsg_logger($order->products); 
-         for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
-
-            echo '<div class="fec-box-check-radio">';
-
-           for ($q = 1; $q <= $order->products[$i]['qty']; $q++) {
-              
-              // echo '<td>' ;
-              
-              // gift wrap setting
-               // echo '<td>'; 
-               $prid = $order->products[$i]['id'];
-               if (zen_get_products_virtual($order->products[$i]['id'])) {
-                  echo GIFT_WRAP_NA;
-               } else if (DOWNLOAD_ENABLED && product_attributes_downloads_status($order->products[$i]['id'], $order->products[$i]['attributes'])) {
-                  echo GIFT_WRAP_NA; 
-               } else if ($wrap_mod->exclude_product($prid)) {
-                  echo GIFT_WRAP_NA; 
-               } else if ($wrap_mod->exclude_category($prid)) {
-                  echo GIFT_WRAP_NA; 
-               } else { 
-                  $gift_id = "wrap_prod_" . $prod_count;
-                  if (isset($_SESSION[$gift_id]) && $_SESSION[$gift_id] != '') $giftChecked = true; else $giftChecked = false;
-                  echo zen_draw_checkbox_field($gift_id,'',$giftChecked, 'id="'.$gift_id .'" onclick="updateForm();"');
-               }
-              
-              echo "<label><span class='fec-gift-price'><strong>" . $order->products[$i]['price'] . "</strong></span>" . $order->products[$i]['name'];
-
-              // if there are attributes, loop thru them and display one per line
-              if (isset($order->products[$i]['attributes']) && sizeof($order->products[$i]['attributes']) > 0 ) {
-                  echo '<ul class="cartAttribsList">';
-                  for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
-                      echo '<li>' . $order->products[$i]['attributes'][$j]['option'] . ': ' . nl2br($order->products[$i]['attributes'][$j]['value']) . '</li>'; 
-                  } // end loop
-                  echo '</ul>';
-              } // endif attribute-info
-              
-              echo "</label>";
-                
-      ?>
-            </div>
-      <?php
-                  $prod_count++; 
-               }
-             }  // end for loopthru all products 
-      ?>
-      </fieldset>
-      <?php
-         }  
-      ?>
-      <?php }} ?>
-      <!-- eof Gift Wrap -->
-      </div>
-  </div>
+  ?>
+  
   <!--BOF SHIPPING-->
     
   <?php
@@ -436,7 +346,7 @@ if(is_object($captcha)) {
       }
     ?>
   <?php if (FEC_SPLIT_CHECKOUT == 'false') { ?>
-
+  <br class="clearBoth" />
   <?php } ?>
   <?php
     if ($credit_covers != true) { 
@@ -584,7 +494,91 @@ if(is_object($captcha)) {
       <?php
         }
       ?>
+      <!-- bof Gift Wrap -->
+      <?php 
+        if (FEC_GIFT_WRAPPING_SWITCH == 'true') {
+          if (!file_exists(DIR_WS_MODULES . "order_total/ot_giftwrap_checkout.php")) {
+            echo '<font color="red"><strong>GIFTWRAP MODULE NOT INSTALLED, PLEASE DISABLE IN FEC CONFIGURATION</strong></font>';
+          } else {     
+      ?>
+      <?php
+         $value = "ot_giftwrap_checkout.php"; 
+         include_once(zen_get_file_directory(DIR_WS_LANGUAGES . $_SESSION['language'] .
+                '/modules/order_total/', $value, 'false'));
+         include_once(DIR_WS_MODULES . "order_total/" . $value);
+         $wrap_mod = new ot_giftwrap_checkout(); 
+         $use_gift_wrap = true;
+         if ($wrap_mod->check()) {
+      ?>
+            <br />
+      <fieldset class="shipping" id="gift_wrap">
+      <legend><?php echo GIFT_WRAP_HEADING; ?></legend>
+      <?php
+          echo '<div id="cartWrapExplain">'; 
+          echo '<a href="javascript:alert(\'' . GIFT_WRAP_EXPLAIN_DETAILS . '\')">' . GIFT_WRAP_EXPLAIN_LINK . '</a>';
+          echo '</div>'; 
+      ?>
+            <table border="0" width="100%" cellspacing="0" cellpadding="0">
+              <tr class="cartTableHeading">
+                <th scope="col" id="ccWrapProductsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
+                <th scope="col" id="ccWrapHeading"><?php echo GIFT_WRAP_CHECKOFF; ?></th>
+              </tr>
+      <?php  
+             // now loop thru all products to display quantity and price
+         $prod_count = 1; 
+      // tsg_logger($order->products); 
+         for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
+           for ($q = 1; $q <= $order->products[$i]['qty']; $q++) {
+              if ($prod_count%2 == 0) {
+                 echo '<tr class="rowEven">';
+              } else {
+                 echo '<tr class="rowOdd">';
+              }
+              echo '<td class="cartProductDisplay">' . $order->products[$i]['name'];
       
+              // if there are attributes, loop thru them and display one per line
+              if (isset($order->products[$i]['attributes']) && sizeof($order->products[$i]['attributes']) > 0 ) {
+                  echo '<ul class="cartAttribsList">';
+                  for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
+                      echo '<li>' . $order->products[$i]['attributes'][$j]['option'] . ': ' . nl2br($order->products[$i]['attributes'][$j]['value']) . '</li>'; 
+                  } // end loop
+                  echo '</ul>';
+              } // endif attribute-info
+      ?>
+              </td>
+      <?php
+               // gift wrap setting
+               echo '<td class="cartWrapCheckDisplay">'; 
+               $prid = $order->products[$i]['id'];
+               if (zen_get_products_virtual($order->products[$i]['id'])) {
+                  echo GIFT_WRAP_NA;
+               } else if (DOWNLOAD_ENABLED && product_attributes_downloads_status($order->products[$i]['id'], $order->products[$i]['attributes'])) {
+                  echo GIFT_WRAP_NA; 
+               } else if ($wrap_mod->exclude_product($prid)) {
+                  echo GIFT_WRAP_NA; 
+               } else if ($wrap_mod->exclude_category($prid)) {
+                  echo GIFT_WRAP_NA; 
+               } else { 
+                  $gift_id = "wrap_prod_" . $prod_count;
+                  if (isset($_SESSION[$gift_id]) && $_SESSION[$gift_id] != '') $giftChecked = true; else $giftChecked = false;
+                  echo zen_draw_checkbox_field($gift_id,'',$giftChecked, 'id="'.$gift_id .'" onclick="updateForm();"');
+               }
+               echo "</td>"; 
+      ?>
+            </tr>
+      <?php
+                  $prod_count++; 
+               }
+             }  // end for loopthru all products 
+      ?>
+            </table>
+      </fieldset>
+            <br />
+      <?php
+         }  
+      ?>
+      <?php }} ?>
+      <!-- eof Gift Wrap -->
       <!-- bof doublebox -->
       <?php
         if (MODULE_ORDER_TOTAL_DOUBLEBOX_STATUS == 'true') {
@@ -687,11 +681,10 @@ if(is_object($captcha)) {
     $checkbox = ($_SESSION['fec_checkbox'] == '1' ? true : false);
   ?>
   <fieldset class="fec-fieldset" id="checkoutFECCheckbox">
-      <legend><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></legend>
-      <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></span>
-      
-      <label><?php echo TEXT_FEC_CHECKBOX; ?></label>
-      <?php echo zen_draw_checkbox_field('fec_checkbox', '1', $checkbox, 'id="fec_checkbox"'); ?>
+  <legend><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></legend>
+  <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></span>
+  <label><?php echo TEXT_FEC_CHECKBOX; ?></label>
+  <?php echo zen_draw_checkbox_field('fec_checkbox', '1', $checkbox, 'id="fec_checkbox"'); ?>
   </fieldset>
   <?php 
   } 
@@ -702,11 +695,10 @@ if(is_object($captcha)) {
     if (FEC_DROP_DOWN == 'true') {
   ?>
   <fieldset class="fec-fieldset" id="checkoutDropdown">
-      <legend><?php echo TABLE_HEADING_DROPDOWN; ?></legend>
-      <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_DROPDOWN; ?></span>
-      
-      <label><?php echo TEXT_DROP_DOWN; ?></label>
-      <?php echo zen_draw_pull_down_menu('dropdown', $dropdown_list_array, $_SESSION['dropdown'], 'onchange="updateForm()"', true); ?>
+  <legend><?php echo TABLE_HEADING_DROPDOWN; ?></legend>
+  <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_DROPDOWN; ?></span>
+  <label><?php echo TEXT_DROP_DOWN; ?></label>
+  <?php echo zen_draw_pull_down_menu('dropdown', $dropdown_list_array, $_SESSION['dropdown'], 'onchange="updateForm()"', true); ?>
   </fieldset>
   <?php
     }
@@ -723,7 +715,7 @@ if(is_object($captcha)) {
 ?>
   
   <!-- begin/comments -->
-  <fieldset class="fec-fieldset fec-comments-<?php echo $checkoutStyle; ?>" id="checkoutComments">
+  <fieldset class="fec-fieldset" id="checkoutComments">
       <legend><?php echo TABLE_HEADING_COMMENTS; ?></legend>
       <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_COMMENTS; ?></span>
       

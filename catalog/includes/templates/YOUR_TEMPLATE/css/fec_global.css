@@ -1,0 +1,565 @@
+/**
+ * Fast Checkout CSS Stylesheet
+ *
+ * @package easy signup/login, checkout and confirmation
+ * @copyright Copyright 2007 Numinix Technology http://www.numinix.com
+ * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
+ * @version $Id: login.css 62 2009-07-12 21:43:34Z numinix $
+ */
+
+/*  confidence box */
+.fec-container {
+    padding: 0 16px 15px 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* steps */
+.fec-page-step {
+    color: #ED1C24;
+    display: block;
+    font-size: 22px;
+    line-height: normal;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+#checkout .fec-container {
+	padding: 0 
+}
+    
+    .fec-container .fec-required {
+        color: #ED1C24;
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        margin-top: -35px;
+        text-align: right;
+    }
+    
+    .fec-container .fec-information {
+        display: block;
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 17px
+    }
+
+    	.fec-container .fec-information p {
+    		padding: 0
+    	}
+
+    .fec-container form {
+        display: block;
+        margin: -18px 0 0; /* margin-top should have the same value as .fec-fieldset fieldset margin-top but negative */
+        overflow: hidden
+    }
+
+        .fec-fieldset {
+            background: #ebebeb;
+            border: 1px solid #b7b7b7;
+            border-top: none;
+            margin: 0;
+            padding: 0 23px 21px;
+            overflow: hidden
+        }
+
+        /* guest checkou */
+        .fec-guest-checkout { margin-top: 10px }
+
+        .fec-fieldset br {
+            display: none;
+        }
+            
+            /* legend */
+            .fec-fieldset legend {
+                display: none;
+            }
+
+            .fec-fieldset .fec-fieldset-legend {
+                background: #252525;
+                color: #fff;
+                display: block;
+                font-size: 13px;
+                font-weight: bold;
+                margin: 0 -24px 17px; /* margins right and left should have the same value as .fec-fieldset paddings right and left + the side borders there as well  */
+                position: relative;
+                padding: 13px 23px 15px;
+                text-transform: uppercase
+            }
+
+            /* information */
+            .fec-fieldset .information {
+                font-size: 12px;
+                padding: 0;
+            }
+
+            /* field */
+            .fec-fieldset .fec-field {
+                margin-bottom: 14px;
+                overflow: hidden;
+            }
+            
+                /* labels */
+                .fec-fieldset .inputLabel {
+                    color: #000;
+                    display: block;
+                    float: none;
+                    font-size: 12px;
+                    font-weight: bold;
+                    line-height: 11px;
+                    margin: 0 0 9px;
+                    padding: 0;
+                    width: auto;
+                }
+
+                /* inputs */
+                .fec-fieldset input[type="text"],
+                .fec-fieldset input[type="password"],
+                .fec-fieldset select,
+                .fec-fieldset textarea {
+                    border: 1px solid #898989;
+                    font-size: 12px;
+                    font-family: "Verdana";
+                    margin: 0 ;
+                    display: inline-block;
+                    padding: 5px;
+                    width: 100%;
+
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                .fec-returning-customers input[type="text"],
+                .fec-returning-customers input[type="password"],
+                .fec-returning-customers select,
+                .fec-returning-customers textarea {
+                    width: 100%
+                }
+
+                .fec-fieldset input:focus,
+                .fec-fieldset select:focus,
+                .fec-fieldset textarea:focus {
+                    background-color: #FFFFFF;
+                    border-color: #AEAEAE;
+                    box-shadow: 1px 1px 3px #CCCCCC;
+                }
+
+                .fec-box-check-radio,
+                .fec-discount .fec-field-inline label {
+                    margin-bottom: 12px;
+                    overflow: hidden;
+                }
+                
+                .fec-box-check-radio input,
+                .fec-box-check-radio label {
+                    float: left;
+                    margin: 0 10px 0 0;
+                    padding: 0;
+                    width: auto
+                }
+
+                .fec-box-check-radio label,
+                .fec-discount .fec-field-inline label {
+                    font-size: 12px;
+                    float: left;
+                    line-height: 19px;
+                    position: relative;
+                    margin-right: 0;
+                    top: -2px;
+                    width: 90%
+                }
+					
+					/* paypal */
+                	.fec-box-check-radio label img {
+                		position: relative;
+                		margin: 2px 0 5px
+                	}
+
+                	.fec-box-check-radio .smallText {
+                		display: block;
+                		font-weight: normal
+                	}
+
+                .fec-box-check-radio input {
+                    height: 13px;
+                    margin: 1px 9px 0 0;
+                    width: 13px
+                }
+
+                    .fec-fieldset .fec-box-check-radio .alert {
+                        float: left;
+                        height: 13px;
+                        line-height: 13px;
+                    }
+
+                    /* alert */
+                    .fec-fieldset .alert {
+                        color: #ED1C24;
+                        display: inline-block;
+                        font-size: 11px;
+                        font-weight: normal;
+                        margin-left: 0;
+                    }
+                
+
+                    /* fieldsets */
+                    .fec-fieldset fieldset {
+                        border: none;
+                        display: block;
+                        margin: 18px 0 0;
+                        overflow: hidden;
+                        padding: 0;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        width: 100%
+                    }
+
+                    /* collum left */
+                    .fec-col-left .fec-fieldset fieldset {
+                        margin-bottom: -14px !important; /* margin-bottom negative here should be the same margin-bottom as in .fec-fieldset .fec-field. It enables creating double margin between the fieldsets*/
+                    }
+
+                        .fec-fieldset fieldset .fec-fieldset-legend,
+                        .fec-fieldset .fec-fieldset-legend-two {
+                            background: none;
+                            border: none; 
+                            color: #ed1c24;
+                            display: block;
+                            font-size: 12px;
+                            font-weight: bold;
+                            height: auto;
+                            line-height: normal;
+                            margin: 0 0 12px;
+                            padding: 0;
+                            text-transform: uppercase 
+                        }
+
+                    /* newsletter and email */
+                    .fec-fieldset .fec-newsletter-email,
+                    .fec-fieldset .fec-referral,
+                    .fec-fieldset .fec-login-details {
+                        border-top: 1px solid #b7b7b7;
+                        margin-bottom: 0;
+                        padding: 18px 0 0;
+                    }
+
+                    .fec-fieldset .fec-newsletter-email {
+                        margin-top: 21px
+                    }
+
+                        .fec-newsletter-email .fec-box-check-radio {
+                            margin-bottom: 0
+                        }
+
+                            .fec-newsletter-email input {
+                                clear: left;   
+                            }
+
+                            .fec-newsletter-email label {
+                                padding-bottom: 8px
+                            }
+
+                    /* referral */
+                    .fec-col-left .fec-fieldset .fec-referral {
+                        margin: 26px 0 -14px
+                    }
+
+                    /* discount/order options */
+                    .fec-fieldset .fec-discount,
+                    .fec-fieldset .fec-table-gifts {
+                    	border-top: 1px solid #b7b7b7;
+						padding-top: 20px
+                    }
+
+                    	.fec-fieldset > div .fec-discount:first-child {
+                    		border-top: none;
+                    		padding-top: 0
+                    	}
+
+        /* address */
+        .fec-fieldset .fec-shipping-to {
+            border-bottom: 1px solid #b7b7b7;
+            margin-bottom: 17px;
+            padding-bottom: 21px
+        }
+            
+            .fec-address-container {
+                margin-top: -5px;
+                overflow: hidden;
+                position: relative;
+            }
+
+                .fec-shipping-address address {
+                    color: #000000;
+                    float: left;
+                    font-size: 12px;
+                    line-height: 18px;
+                    padding: 0;
+                }
+
+                    .fec-shipping-address address br {
+                        display: block;
+                    }
+
+                    .fec-shipping-address a {
+                        position: absolute;
+                        bottom: 2px;
+                        right: 0;
+                        text-transform: uppercase
+                    }
+
+                        .fec-shipping-address a .cssButton,
+                        .fec-shipping-address a .cssButtonHover,
+                        #cartWrapExplain a {
+                            background: none !important;
+                            border: none;
+                            color: #636363;
+                            font-size: 10px;
+                            font-weight: bold;
+                            padding: 0 !important;
+                            width: auto !important
+                        }
+
+                        .fec-shipping-address a .cssButton:hover,
+                        .fec-shipping-address a .cssButtonHover:hover,
+                        #cartWrapExplain a:hover {
+                            color: #373737
+                        }
+
+        /* edit button */
+        .fec-fieldset .fec-edit-button {
+            margin: -52px 0 0;
+            position: relative
+        }
+
+            .fec-fieldset .fec-edit-button .cssButton,
+            .fec-fieldset .fec-edit-button .cssButtonHover {
+                background: #898989;
+                cursor: pointer;
+                padding: 3px 4px 4px
+            }
+
+            .fec-fieldset .fec-edit-button .cssButtonHover,
+            .fec-fieldset .fec-edit-button .cssButtonHover:hover {
+                background: #787878;
+            }
+
+        .fec-table-items table {
+            background: none !important;
+            border: none !important;
+            box-shadow: 1px 1px 5px #EDEDED;
+            border-collapse: collapse;
+            border-spacing: 1px;
+            margin-top: -7px;
+            width: 100%;
+        }
+
+            .fec-table-items tr {
+                background: no-repeat !important
+            }
+
+            .fec-table-items table th {
+                background: #666;
+                border-left: 1px solid #CCC;
+                color: #fff;
+                display: none;
+                font-size: 11px;
+                padding: 0 10px;
+                height: 30px;
+                line-height: 30px;
+            }
+
+            .fec-table-items table th:first-child {
+                border-left: none;
+            }
+                    
+                /* item */
+                .fec-table-items table #ccProductsHeading {
+                    text-align: left;
+                }
+
+            .fec-table-items table td {
+                color: #000;
+                padding: 12px 0 !important;
+                border-bottom: 1px solid #b7b7b7 !important;
+                font-size: 12px;
+                /*border-left: 1px solid #CCC;*/
+            }
+
+            .fec-table-items table td:first-child {
+                border-left: medium none;
+                text-align: center;
+                width: 7%;
+            }
+
+                .fec-table-items table .cartImage {
+                    text-align: center;
+                    width: 20%
+                }
+
+                .fec-table-items table .cartAttribsList {
+                    margin: 6px 0;
+                    padding-left: 14px
+                }
+
+            /* totals */
+            #orderTotals {
+                position: relative;
+                z-index: 1;
+            }
+
+                #orderTotals > div {
+                    overflow: hidden;
+                }
+
+                #orderTotals > div > div {
+                    color: #000;
+                    padding: 10px 0 0;
+                    font-size: 12px;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                    #orderTotals > div .totalBox {
+                        width: 20%;
+                    }
+
+                    #orderTotals > div .lineTitle {
+                        width: 80%
+                    }
+
+                    #orderTotals #ottotal div {
+                        font-weight: bold;
+                    }
+
+        /* important */
+        .fec-container .fec-important a {
+            color: #ed1c24;
+            display: block;
+            font-size: 12px;
+            margin: 14px 0;
+            text-align: right;
+        }
+
+        .fec-container .fec-important a:hover {
+            color: #B5161B
+        }
+
+        /* buttons */
+        .fec-container .buttonRow.forward {
+            margin-bottom: 0;
+            margin-right: 0;
+        }
+
+        /* only for left side */
+        .fec-col-left .buttonRow.forward {
+            border-top: 1px solid #B7B7B7;
+            margin: 21px 0 0 0;
+            padding-top: 21px;
+            width: 45%
+        }
+        /* end */
+
+        .fec-container .cssButton,
+        .fec-container .cssButtonHover {
+            border: none;
+            background: #ed1c24;
+            color: #fff;
+            cursor: pointer;
+            float: right;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0;
+            padding: 4px 6px 5px;
+            text-transform: uppercase;
+            width: auto !important
+        }
+
+        /* saf3+, chrome1+ */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .fec-container .cssButton,
+            .fec-container .cssButtonHover {
+                padding: 6px 7px;
+            }
+        }
+        
+
+        .fec-container .cssButtonHover,
+        .fec-container .cssButtonHover:hover {
+            border-color: none;
+            background: #B5161B
+        }
+
+        /* button container */
+        .fec-button-container .buttonRow.forward {
+            margin-top: 0
+        }
+
+        .fec-button-container .fec-infomation {
+            clear: both;
+            text-align: right;
+            font-size: 12px;
+            padding-top: 10px
+        }
+
+/* login/create acount */
+.fec-easy-sing-up .fec-col-left {
+  float: left;
+  width: 63.510204081633%
+}
+
+.fec-easy-sing-up .fec-col-right {
+  width: 33.5%;
+  float: right;
+}
+
+    /* collumns in Create an Account */
+    .fec-cl-left,
+    .fec-cl-right {
+        float: left;
+        width: auto;
+        margin-top: 21px;
+        overflow: hidden
+    }
+    .fec-cl-left {
+        border-right: 1px solid #b7b7b7;
+        padding-right: 5%;
+        margin-right: 5%;
+        width: 50%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        /* state field */
+        #fec-state-2-field {
+            display: none;
+        }
+
+            #fec-state-2-field label {
+                display: none;
+            }
+
+    .fec-cl-right {
+        width: 45%
+    }
+
+        /* controls boxes */
+        .fec-fieldset .fec-billing-address {
+            margin-top: 0
+        }
+
+        .fec-fieldset .fec-login-details {
+            margin-top: -19px   
+        }
+
+        .fec-col-left #shippingField {
+            margin-top: 0 !important;
+            margin-bottom: 30px !important; /* fix space between .fec-login-details and this box */
+        }
+

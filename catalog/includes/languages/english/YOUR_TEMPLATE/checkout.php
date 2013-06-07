@@ -23,7 +23,7 @@
 define('NAVBAR_TITLE', 'Checkout');
 
 //SECTION HEADINGS
-define('HEADING_TITLE_ORDER_TOTAL', 'Your Order Total:');
+define('HEADING_TITLE_ORDER_TOTAL', 'Checkout - step 2 / 3:');
 define('HEADING_TITLE_SHIPPING', 'Step 1 - Delivery Information'); 
 define('HEADING_TITLE_PAYMENT', 'Step 2 - Payment Information'); 
 define('HEADING_TITLE_PAYMENT_VIRTUAL', 'Step 1 - Payment Information');

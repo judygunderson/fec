@@ -12,13 +12,16 @@
  * @version $Id: J_Schilz for Integrated COWOA - 14 April 2007
  */
 ?>
-<div class="centerColumn" id="createAcctDefault">
+<div class="fec-container" id="createAcctDefault">
+    <span id="createAcctDefaultHeading" class="fec-page-step">
+    	<?php echo HEADING_TITLE; ?>
+    </span>
 
-<h1 id="createAcctDefaultHeading"><?php echo HEADING_TITLE; ?></h1>
+	<div class="fec-alert fec-required"><?php echo FORM_REQUIRED_INFORMATION; ?></div>
 <?php 
   if (FEC_NOACCOUNT_ONLY_SWITCH != "true") {
 ?>
-<h2 id="createAcctDefaultLoginLink"><?php echo sprintf(TEXT_ORIGIN_LOGIN, zen_href_link(FILENAME_LOGIN, zen_get_all_get_params(array('action')), 'SSL')); ?></h2>
+	<p id="createAcctDefaultLoginLink"><?php echo sprintf(TEXT_ORIGIN_LOGIN, zen_href_link(FILENAME_LOGIN, zen_get_all_get_params(array('action')), 'SSL')); ?></p>
 <?php
   }
 ?>
@@ -27,9 +30,9 @@
 
 <?php require($template->get_template_dir('tpl_modules_no_account.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_no_account.php'); ?>
 
-<div id="checkoutButtons">
-  <div id="checkoutButton" class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT); ?></div>
-  <div class="buttonRow back"><?php echo '<strong>' . TITLE_CONTINUE_CHECKOUT_PROCEDURE . '</strong><br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?></div>
+<div class="fec-container fec-button-container" id="checkoutButtons">
+  	<div id="checkoutButton" class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT); ?></div>
+  	<div class="fec-infomation"><?php echo '<strong>' . TITLE_CONTINUE_CHECKOUT_PROCEDURE . '</strong><br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?></div>
 </div>
 
 </div>

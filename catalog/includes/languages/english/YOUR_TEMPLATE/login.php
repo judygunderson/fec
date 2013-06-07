@@ -9,7 +9,9 @@
 
 define('NAVBAR_TITLE', 'Login');
 define('HEADING_TITLE', 'Welcome, Please Sign In');
+define('HEADING_TITLE_LOGIN_STEP', 'Checkout - step 1 / 2');
 define('HEADING_CONFIDENCE', 'Shop With Confidence');
+define('TEXT_CONFIDENCE', 'For a faster checkout experience, we offer the option to checkout without creating an account.<br />');
 
 define('HEADING_NEW_CUSTOMER', 'New? Please Provide Your Billing Information');
 
@@ -20,8 +22,9 @@ define('TEXT_NEW_CUSTOMER_POST_INTRODUCTION_SPLIT', 'Returning customers may ben
 define('HEADING_RETURNING_CUSTOMER', 'Returning Customers: Please Log In');
 define('HEADING_RETURNING_CUSTOMER_SPLIT', 'Returning Customers');
 
+define('COWOA_HEADING', 'Guest Checkout ');
 define('TEXT_RATHER_COWOA', 'For a faster checkout experience, we offer the option to checkout without creating an account.<br />');
-define('COWOA_HEADING', 'Checkout Without An Account');
+
 
 define('TEXT_RETURNING_CUSTOMER_SPLIT', '<strong>' . STORE_NAME . '</strong> account holders may login below.');
 
@@ -39,7 +42,7 @@ define('TEXT_PRIVACY_CONDITIONS_CONFIRM', '<span class="privacyagree">I have rea
 
 define('HEADING_PAYPAL', 'PayPal Express Checkout');
 define('TEXT_PAYPAL_INTRODUCTION_SPLIT', 'Have a PayPal account? Want to pay quickly with a credit card? Use the PayPal button below to use the Express Checkout option.');
-define('HEADING_NEW_CUSTOMER_SPLIT', 'New Customer? Please enter your checkout information here');
+define('HEADING_NEW_CUSTOMER_SPLIT', 'Create an Account');
 //displayed if the customer does not have any items in their shopping cart (ie. they have elected to register or sign in)
 define('TEXT_NEW_CUSTOMER_INTRODUCTION_SPLIT_NO_CART', 'To begin the checkout procedure, please enter your billing information as it appears on your credit card statement.');
 //displayed if the customer has items in their shopping cart (to promote registering and continuing the checkout process)

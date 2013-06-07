@@ -14,5 +14,8 @@ $loaders[] = array('conditions' => array('pages' => array(FILENAME_CREATE_ACCOUN
                       'jquery/jquery_create_account.js' => 2,
                       'jquery/jquery_addr_pulldowns.php' => 3,
                       'jquery/jquery_form_check.php' => 4										
+                    ),
+                    'css_files' => array(
+                      'fec_global.css' => 1
                     )
 								);  

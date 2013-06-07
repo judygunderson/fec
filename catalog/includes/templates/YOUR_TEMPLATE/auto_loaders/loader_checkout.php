@@ -13,6 +13,7 @@ $loaders[] = array('conditions' => array('pages' => array(FILENAME_CHECKOUT)),
                       'jquery/jquery_checkout.php' => 5										
                     ),
                     'css_files' => array(
-                      'facebox.css' => 1
+                      'facebox.css' => 1,
+                      'fec_global.css' => 2
                     )
 								);

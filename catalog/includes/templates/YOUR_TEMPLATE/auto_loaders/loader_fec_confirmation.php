@@ -8,9 +8,13 @@
 * @version $Id: link.php 149 2009-03-04 05:23:35Z yellow1912 $
 */                                             
                                                             
-$loaders[] = array('conditions' => array('pages' => array(FILENAME_FEC_CONFIRMATION)),
+$loaders[] = array('conditions' => array('pages' => array(FILENAME_FEC_CONFIRMATION, checkout_confirmation)),
 										'jscript_files' => array(
 										  'jquery/jquery-1.8.3.min.js' => 1,
                       'jquery/jquery_fec_confirmation.php' => 2										
+                    ),
+                    'css_files' => array(
+                      'fec_global.css' => 1,
+                      'fec_confirmation.css' => 1
                     )
 								);  

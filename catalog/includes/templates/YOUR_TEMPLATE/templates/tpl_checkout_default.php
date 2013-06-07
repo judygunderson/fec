@@ -31,7 +31,9 @@
 <?php if ($messageStack->size('checkout_shipping') > 0) echo $messageStack->output('checkout_shipping'); ?>
 <?php if ($messageStack->size('checkout_payment') > 0) echo $messageStack->output('checkout_payment'); ?>
 
-<h1 id="checkoutOrderHeading"><?php echo HEADING_TITLE_ORDER_TOTAL; ?></h1>
+<span id="checkoutOrderHeading" class="fec-page-step">
+	<?php echo HEADING_TITLE_ORDER_TOTAL; ?>
+</span>
 
 <?php include(DIR_WS_TEMPLATE . 'templates/tpl_checkout_stacked.php'); ?>
 				
@@ -41,12 +43,14 @@
 	$title_checkout = TITLE_CONTINUE_CHECKOUT_PROCEDURE_VIRTUAL;
 }
 ?>
-<?php if (FEC_ONE_PAGE == 'false') { ?>
-	<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT, 'onclick="submitFunction('.zen_user_has_gv_account($_SESSION['customer_id']).','.$order->info['total'].')"'); ?></div>
-	<div class="buttonRow back"><?php echo $title_checkout . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?></div>
-<?php } else { ?>
-	<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'onclick="submitFunction('.zen_user_has_gv_account($_SESSION['customer_id']).','.$order->info['total'].')"'); ?></div>
-	<div class="buttonRow back"><?php echo TITLE_CONFIRM_CHECKOUT . '<br />' . TEXT_CONFIRM_CHECKOUT; ?></div>
-<?php } ?>
+<div class="fec-container fec-button-container">
+	<?php if (FEC_ONE_PAGE == 'false') { ?>
+		<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT, 'onclick="submitFunction('.zen_user_has_gv_account($_SESSION['customer_id']).','.$order->info['total'].')"'); ?></div>
+		<div class="fec-infomation"><?php echo TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?></div>
+	<?php } else { ?>
+		<div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'onclick="submitFunction('.zen_user_has_gv_account($_SESSION['customer_id']).','.$order->info['total'].')"'); ?></div>
+		<div class="fec-infomation"><?php echo TEXT_CONFIRM_CHECKOUT; ?></div>
+	<?php } ?>
+</div>
 </form>
 </div>
