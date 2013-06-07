@@ -193,9 +193,11 @@
          include_once(zen_get_file_directory(DIR_WS_LANGUAGES . $_SESSION['language'] .
                 '/modules/order_total/', $value, 'false'));
          include_once(DIR_WS_MODULES . "order_total/" . $value);
-         $wrap_mod = new ot_giftwrap_checkout(); 
-         $use_gift_wrap = true;
-         if ($wrap_mod->check()) {
+         $wrap_mod = new ot_giftwrap_checkout();
+         if (is_object($wrap_mod)) { 
+	         $products_wrap_fee = $wrap_mod->get_products_wrap_fee();
+	         $use_gift_wrap = true;
+	         if ($wrap_mod->check()) {
       ?>
             <fieldset class="fec-table-items fec-table-gifts" id="gift_wrap">
                 <legend><?php echo GIFT_WRAP_HEADING; ?></legend>
@@ -212,45 +214,45 @@
                 </tr> -->
       <?php  
              // now loop thru all products to display quantity and price
-         $prod_count = 1; 
+      			 $prod_count = 1; 
       // tsg_logger($order->products); 
-         for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
+		         for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
 
-            echo '<div class="fec-box-check-radio">';
+		           echo '<div class="fec-box-check-radio">';
 
-           for ($q = 1; $q <= $order->products[$i]['qty']; $q++) {
-              
-              // echo '<td>' ;
-              
-              // gift wrap setting
-               // echo '<td>'; 
-               $prid = $order->products[$i]['id'];
-               if (zen_get_products_virtual($order->products[$i]['id'])) {
-                  echo GIFT_WRAP_NA;
-               } else if (DOWNLOAD_ENABLED && product_attributes_downloads_status($order->products[$i]['id'], $order->products[$i]['attributes'])) {
-                  echo GIFT_WRAP_NA; 
-               } else if ($wrap_mod->exclude_product($prid)) {
-                  echo GIFT_WRAP_NA; 
-               } else if ($wrap_mod->exclude_category($prid)) {
-                  echo GIFT_WRAP_NA; 
-               } else { 
-                  $gift_id = "wrap_prod_" . $prod_count;
-                  if (isset($_SESSION[$gift_id]) && $_SESSION[$gift_id] != '') $giftChecked = true; else $giftChecked = false;
-                  echo zen_draw_checkbox_field($gift_id,'',$giftChecked, 'id="'.$gift_id .'" onclick="updateForm();"');
-               }
-              
-              echo "<label><span class='fec-gift-price'><strong>" . $order->products[$i]['price'] . "</strong></span>" . $order->products[$i]['name'];
+		           for ($q = 1; $q <= $order->products[$i]['qty']; $q++) {
+		              
+									// echo '<td>' ;
+		            
+		            // gift wrap setting
+		             // echo '<td>'; 
+		             $prid = $order->products[$i]['id'];
+		             if (zen_get_products_virtual($order->products[$i]['id'])) {
+		                echo GIFT_WRAP_NA;
+		             } else if (DOWNLOAD_ENABLED && product_attributes_downloads_status($order->products[$i]['id'], $order->products[$i]['attributes'])) {
+		                echo GIFT_WRAP_NA; 
+		             } else if ($wrap_mod->exclude_product($prid)) {
+		                echo GIFT_WRAP_NA; 
+		             } else if ($wrap_mod->exclude_category($prid)) {
+		                echo GIFT_WRAP_NA; 
+		             } else { 
+		                $gift_id = "wrap_prod_" . $prod_count;
+		                if (isset($_SESSION[$gift_id]) && $_SESSION[$gift_id] != '') $giftChecked = true; else $giftChecked = false;
+		                echo zen_draw_checkbox_field($gift_id,'',$giftChecked, 'id="'.$gift_id .'" onclick="updateForm();"');
+		             }
+		            
+		              echo "<label><span class='fec-gift-price'><strong>" . $currencies->format($products_wrap_fee[zen_get_prid($order->products[$i]['id'])]) . "</strong></span>" . $order->products[$i]['name'];
 
-              // if there are attributes, loop thru them and display one per line
-              if (isset($order->products[$i]['attributes']) && sizeof($order->products[$i]['attributes']) > 0 ) {
-                  echo '<ul class="cartAttribsList">';
-                  for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
-                      echo '<li>' . $order->products[$i]['attributes'][$j]['option'] . ': ' . nl2br($order->products[$i]['attributes'][$j]['value']) . '</li>'; 
-                  } // end loop
-                  echo '</ul>';
-              } // endif attribute-info
-              
-              echo "</label>";
+		              // if there are attributes, loop thru them and display one per line
+		              if (isset($order->products[$i]['attributes']) && sizeof($order->products[$i]['attributes']) > 0 ) {
+		                  echo '<ul class="cartAttribsList">';
+		                  for ($j=0, $n2=sizeof($order->products[$i]['attributes']); $j<$n2; $j++) {
+		                      echo '<li>' . $order->products[$i]['attributes'][$j]['option'] . ': ' . nl2br($order->products[$i]['attributes'][$j]['value']) . '</li>'; 
+		                  } // end loop
+		                  echo '</ul>';
+		              } // endif attribute-info
+		              
+		              echo "</label>";
                 
       ?>
             </div>
@@ -261,7 +263,8 @@
       ?>
       </fieldset>
       <?php
-         }  
+      		}
+			  }  
       ?>
       <?php }} ?>
       <!-- eof Gift Wrap -->

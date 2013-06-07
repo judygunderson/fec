@@ -125,8 +125,7 @@
     EMAIL_SEPARATOR . "\n" .
     EMAIL_TEXT_ORDER_NUMBER . ' ' . $zf_insert_id . "\n" .
     EMAIL_TEXT_DATE_ORDERED . ' ' . strftime(DATE_FORMAT_LONG) . "\n" .
-    EMAIL_TEXT_INVOICE_URL . ' ' . zen_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id=' . $zf_insert_id, 'SSL', false) . "\n\n";
-    $html_msg['EMAIL_TEXT_HEADER']     = EMAIL_TEXT_HEADER;</code></pre>
+    EMAIL_TEXT_INVOICE_URL . ' ' . zen_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id=' . $zf_insert_id, 'SSL', false) . "\n\n";</code></pre>
                 </div>
                 Replace with:
                 <div class="code">
@@ -463,7 +462,8 @@ if (in_array($current_page_base,array('checkout','fec_confirmation','login','no_
 }</code></pre>
               </div>
             </li>
-            <li>To use Checkout Without Account, Easy Sign-Up and Login must also be activated.  Otherwise, Checkout Without Account can be installed as a stand-alone product on the normal login system.</li>          
+            <li>To use Checkout Without Account, Easy Sign-Up and Login must also be activated.  Otherwise, Checkout Without Account can be installed as a stand-alone product on the normal login system.</li>
+      			<li>If using the Gift Wrapping module, backup includes/modules/order_total/ot_giftwrap_checkout.php and upload the file located in the /optional/ folder of the FEC package.</li>          
           </ul>
         </div>
       </div>
