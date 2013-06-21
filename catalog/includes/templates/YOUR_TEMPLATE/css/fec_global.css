@@ -540,15 +540,6 @@
         box-sizing: border-box;
     }
 
-        /* state field */
-        #fec-state-2-field {
-            display: none;
-        }
-
-            #fec-state-2-field label {
-                display: none;
-            }
-
     .fec-cl-right {
         width: 45%
     }

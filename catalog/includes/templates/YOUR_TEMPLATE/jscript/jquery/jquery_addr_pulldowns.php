@@ -12,9 +12,24 @@
  */
 ?>
 <script language="javascript" type="text/javascript"><!--//
+	<?php
+		switch($_GET['main_page']) {
+			case 'no_account':
+	?>
+  jQuery(document).ready(function() {
+    update_zone(document.no_account);
+  });
+	<?php
+				break;
+			case 'create_account':
+	?>
   jQuery(document).ready(function() {
     update_zone(document.create_account);
   });
+	<?php
+				break;
+		}
+	?>
   function update_zone(theForm) {
     // if there is no zone_id field to update, or if it is hidden from display, then exit performing no updates
     if (!theForm || !theForm.elements["zone_id"]) return;

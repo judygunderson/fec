@@ -120,7 +120,7 @@
         ?>
         <div class="<?php echo $addclass; ?> fec-field">
             <label class="inputLabel" for="country"><?php echo ENTRY_COUNTRY; ?> <span class="alert"><?php echo ENTRY_COUNTRY_TEXT; ?></span></label>
-            <?php echo zen_get_country_list('zone_country_id', $_SESSION['zone_country_id'], 'id="country" ' . ($flag_show_pulldown_states == true ? 'onchange="update_zone(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
+            <?php echo zen_get_country_list('zone_country_id', $selected_country, 'id="country" ' . ($flag_show_pulldown_states == true ? 'onchange="update_zone(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
         </div>
         <!-- end/country -->
 
@@ -276,7 +276,7 @@
         ?>
             <div class="<?php echo $addclass; ?> fec-field">
                 <label class="inputLabel" for="country_shipping"><?php echo ENTRY_COUNTRY; ?> <span class="alert"><?php echo ENTRY_COUNTRY_TEXT; ?></span></label>
-                <?php echo zen_get_country_list('zone_country_id_shipping', $_SESSION['zone_country_id_shipping'], 'id="country_shipping" ' . ($flag_show_pulldown_states_shipping == true ? 'onchange="update_zone_shipping(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
+                <?php echo zen_get_country_list('zone_country_id_shipping', $selected_country_shipping, 'id="country_shipping" ' . ($flag_show_pulldown_states_shipping == true ? 'onchange="update_zone_shipping(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
             </div>
         <!-- end/country shipping -->
         
