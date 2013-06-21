@@ -120,7 +120,7 @@
         ?>
         <div class="<?php echo $addclass; ?> fec-field">
             <label class="inputLabel" for="country"><?php echo ENTRY_COUNTRY; ?> <span class="alert"><?php echo ENTRY_COUNTRY_TEXT; ?></span></label>
-            <?php echo zen_get_country_list('zone_country_id', $_SESSION['zone_country_id'], 'id="country" ' . ($flag_show_pulldown_states == true ? 'onchange="update_zone(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
+            <?php echo zen_get_country_list('zone_country_id', $selected_country, 'id="country" ' . ($flag_show_pulldown_states == true ? 'onchange="update_zone(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
         </div>
         <!-- end/country -->
 
@@ -134,15 +134,24 @@
                         <?php
                             echo zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $_SESSION['zone_id'], 'id="stateZone"');
                                  
-                            }
                         ?>
                     </div>
+                <?php     
+                    }
+                ?>
 
                     <?php if ($flag_show_pulldown_states == true) { ?>
                         
                     <?php } ?>
 
-                    <div class="fec-field fec-state-2-field" id="fec-state-2-field">
+                    <div class="fec-field fec-state-2-field" 
+
+                        <?php if ($flag_show_pulldown_states == true) { ?> 
+                            id="fec-state-2-field"
+                        <? } ?>
+
+                    >
+                        
                         <label class="inputLabel" for="state" id="stateLabel"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stText">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
                         <?php
                             echo zen_draw_input_field('state', $_SESSION['state'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
@@ -267,41 +276,12 @@
         ?>
             <div class="<?php echo $addclass; ?> fec-field">
                 <label class="inputLabel" for="country_shipping"><?php echo ENTRY_COUNTRY; ?> <span class="alert"><?php echo ENTRY_COUNTRY_TEXT; ?></span></label>
-                <?php echo zen_get_country_list('zone_country_id_shipping', $_SESSION['zone_country_id_shipping'], 'id="country_shipping" ' . ($flag_show_pulldown_states_shipping == true ? 'onchange="update_zone_shipping(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
+                <?php echo zen_get_country_list('zone_country_id_shipping', $selected_country_shipping, 'id="country_shipping" ' . ($flag_show_pulldown_states_shipping == true ? 'onchange="update_zone_shipping(this.form);"' : '')) . (zen_not_null(ENTRY_COUNTRY_TEXT) ? '': ''); ?>
             </div>
         <!-- end/country shipping -->
         
 
-        <?php
-            if (ACCOUNT_STATE == 'true') {
-                if ($flag_show_pulldown_states_shipping == true) {
-        ?>
-                    <div class="fec-field">
-                        <label class="inputLabel" for="stateZone_shipping" id="zoneLabel"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
-                        <?php
-                              echo zen_draw_pull_down_menu('zone_id_shipping', zen_prepare_country_zones_pull_down($selected_country_shipping), $_SESSION['zone_id_shipping'], 'id="stateZone_shipping"');
-                              
-                            }
-                        ?>
-                    </div>
-
-                    <?php if ($flag_show_pulldown_states_shipping == true) { ?>
-                    <?php } ?>
-                    
-                    <div class="fec-field">
-                        <label class="inputLabel" for="state_shipping" id="stateLabelShipping"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stTextShipping">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
-                        <?php
-                            echo zen_draw_input_field('state_shipping', $_SESSION['state_shipping'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state_shipping"');
-                            
-                            
-                            if ($flag_show_pulldown_states_shipping == false) {
-                                echo zen_draw_hidden_field('zone_id_shipping', $_SESSION['zone_id_shipping'], ' ');
-                            }
-                        ?>
-                    </div>
-        <?php
-            }
-        ?>
+        
         <!-- end/state shipping -->
         
         <div class="fec-field">

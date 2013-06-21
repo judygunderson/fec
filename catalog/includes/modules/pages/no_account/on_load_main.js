@@ -1,1 +1,0 @@
-update_zone(document.no_account); update_zone_shipping(document.no_account);

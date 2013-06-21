@@ -507,6 +507,10 @@
             padding-top: 10px
         }
 
+.fec-easy-sing-up.no-account-only {
+    margin-top: 22px
+}
+
 /* login/create acount */
 .fec-easy-sing-up .fec-col-left {
   float: left;
@@ -535,15 +539,6 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-
-        /* state field */
-        #fec-state-2-field {
-            display: none;
-        }
-
-            #fec-state-2-field label {
-                display: none;
-            }
 
     .fec-cl-right {
         width: 45%
