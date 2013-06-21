@@ -507,6 +507,10 @@
             padding-top: 10px
         }
 
+.fec-easy-sing-up.no-account-only {
+    margin-top: 22px
+}
+
 /* login/create acount */
 .fec-easy-sing-up .fec-col-left {
   float: left;

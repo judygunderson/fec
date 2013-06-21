@@ -17,7 +17,14 @@
 
 <?php if ($messageStack->size('no_account') > 0) echo $messageStack->output('no_account'); ?>
 
-<div class="fec-easy-sing-up">
+<?php 
+    if (FEC_NOACCOUNT_ONLY_SWITCH != "true") {
+?>
+    <div class="fec-easy-sing-up">
+<?php } else { ?>
+    <div class="fec-easy-sing-up no-account-only">
+<?php } ?>
+
     <div class="fec-col-left">
         <fieldset class="fec-fieldset">
             <span class="fec-fieldset-legend">Guest Checkout</span> 
