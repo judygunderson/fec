@@ -134,9 +134,11 @@
                         <?php
                             echo zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $_SESSION['zone_id'], 'id="stateZone"');
                                  
-                            }
                         ?>
                     </div>
+                <?php     
+                    }
+                ?>
 
                     <?php if ($flag_show_pulldown_states == true) { ?>
                         
