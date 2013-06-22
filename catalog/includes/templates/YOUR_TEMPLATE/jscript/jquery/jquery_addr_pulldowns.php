@@ -106,9 +106,9 @@
       jQuery('#stText').removeClass('visibleField');
       jQuery('#stText').addClass('hiddenField');
     }
-    if(jQuery("#country").val() === "") {
+    
         jQuery("#fec-state-2-field").hide();
-    }
+    
   }
   
   function hideStateFieldShipping() {
@@ -129,6 +129,10 @@
       jQuery('#stTextShipping').removeClass('visibleField');
       jQuery('#stTextShipping').addClass('hiddenField');
     }
+
+    
+        jQuery("#fec-state-2-field-shipping").hide();
+    
   }
 
   function showStateField() {
@@ -173,5 +177,8 @@
       jQuery('#stTextShipping').removeClass('hiddenField');
       jQuery('#stTextShipping').addClass('visibleField');
     }
+
+    
+    jQuery("#fec-state-2-field-shipping").show();
   }
 //--></script>
