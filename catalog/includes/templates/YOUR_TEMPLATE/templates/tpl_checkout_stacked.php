@@ -12,7 +12,7 @@
       }
   ?>
   
-  <div id="checkoutOrderForm">
+  <div id="checkoutOrderForm" class="fec-block-checkout <?php echo $checkoutStyle; ?>">
       <fieldset class="fec-table-items fec-fieldset" id="checkoutShoppingCart">
           <legend><?php echo TABLE_HEADING_SHOPPING_CART; ?></legend>
           <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_SHOPPING_CART; ?></span>
@@ -85,7 +85,7 @@
   
   <!-- EOF SHOPPING CART -->
   
-  <div class="fec-fieldset fec-order-options">
+  <div class="fec-fieldset fec-order-options fec-block-checkout <?php echo $checkoutStyle; ?>">
       <span class="fec-fieldset-legend">Order Options</span>
       <div>
   <?php
@@ -272,7 +272,7 @@
   <?php
       if ($order->content_type != 'virtual') {
   ?>
-          <div id="checkoutShippingForm<?php echo $checkoutStyle; ?>">
+          <div id="checkoutShippingForm" class="fec-block-checkout <?php echo $checkoutStyle; ?>">
 
               <!-- <h1 id="checkoutShippingHeading"><?php echo HEADING_TITLE_SHIPPING; ?></h1> -->
               
@@ -446,7 +446,7 @@ if(is_object($captcha)) {
       }
   ?>
   <!-- bof payment -->
-  <div id="checkoutPaymentForm<?php echo $checkoutStyle; ?>">
+  <div id="checkoutPaymentForm" class="fec-block-checkout <?php echo $checkoutStyle; ?>">
       <!-- <h1 id="checkoutPaymentHeading"><?php echo $heading_title_payment; ?></h1> -->
                   
       <fieldset class="fec-shipping-methods fec-fieldset" id="checkoutPayment">
@@ -723,7 +723,7 @@ if(is_object($captcha)) {
 ?>
   
   <!-- begin/comments -->
-  <fieldset class="fec-fieldset fec-comments-<?php echo $checkoutStyle; ?>" id="checkoutComments">
+  <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutComments">
       <legend><?php echo TABLE_HEADING_COMMENTS; ?></legend>
       <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_COMMENTS; ?></span>
       

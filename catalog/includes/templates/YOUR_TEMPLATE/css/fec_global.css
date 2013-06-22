@@ -169,7 +169,7 @@
                     position: relative;
                     margin-right: 0;
                     top: -2px;
-                    width: 90%
+                    width: 83%
                 }
 					
 					/* paypal */
@@ -540,16 +540,35 @@
         box-sizing: border-box;
     }
 
+        /* state field */
+        #fec-state-2-field,
+        #fec-state-2-field-shipping {
+            display: none;
+        }
+
+            #fec-state-2-field label,
+            #fec-state-2-field-shipping label {
+                display: none;
+            }
+
     .fec-cl-right {
         width: 45%
     }
 
         /* controls boxes */
-        .fec-fieldset .fec-billing-address {
+        .fec-fieldset .fec-billing-address,
+        .fec-fieldset .fec-company,
+        .fec-fieldset .fec-date-birth,
+        .fec-fieldset .fec-privacy {
             margin-top: 0
         }
 
-        .fec-fieldset .fec-login-details {
+        .fec-fieldset .fec-company {
+            padding-bottom: 14px
+        }
+
+        .fec-fieldset .fec-login-details,
+        .fec-fieldset .fec-privacy {
             margin-top: -19px   
         }
 

@@ -1,33 +1,46 @@
-div#checkoutPaymentFormFull,
-div#checkoutPaymentFormsplitFull { 
+/* non split */
+.fec-block-checkout {
+	width: 100%;
+	clear: both;
 	margin-bottom: 30px;
+
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.fec-block-checkout.split {
+	
+	width: 48%
+}
+
+#checkoutPaymentForm {
+	float: right;
+}
+
+div#checkoutPaymentFormFull,
+div#checkoutPaymentFormsplitFull { 
+	margin-bottom: 30px;
+	float: none;
 }
 
 div#checkoutPaymentFormsplit,
 #checkout .fec-order-options {
 	float: right;
-	width: 48%;
+	/*width: 48%;*/
 	clear: right;
 	margin-bottom: 30px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
 div#checkoutOrderFormsplit,
 div#checkoutShippingFormsplit,
 div#checkoutOrderForm,
+#divcheckoutShippingMethods,
+#checkoutShippingForm,
 #checkoutComments {
 	float: left;
 	clear: left;
-	width: 48%;
-	margin-bottom: 30px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	/*width: 48%;*/
 }
 
 div#checkoutPaymentFormsplitFull,
@@ -169,14 +182,19 @@ div#checkoutPaymentFormsplitFull,
 					width: 237px
 				}
 
-				.fec-credit-card-info select {
+				.fec-credit-card-info select[id*="year"],
+				.fec-credit-card-info select[id*="month"] {
 					float: left;
 					width: 84px
 				}
 
-				.fec-credit-card-info #cc-cc-expires-month {
+				.fec-credit-card-info select[id*="month"] {
 					margin-right: 12px;
 					width: 141px
+				}
+
+				.fec-credit-card-info input[id*="cv"] {
+					width: 75px 
 				}
 
 		/* table gifs */

@@ -116,7 +116,7 @@
             <?php
               if (FEC_NOACCOUNT_SWITCH == 'true' && FEC_NOACCOUNT_POSITION == 'side') {
                 if ($_SESSION['cart']->count_contents() > 0) { ?>
-                  <fieldset class="fec-fieldset">
+                  <fieldset class="fec-fieldset fec-no-account">
                       <legend><?php echo COWOA_HEADING; ?></legend>
                       <span class="fec-fieldset-legend"><?php echo COWOA_HEADING; ?></span>
                       
