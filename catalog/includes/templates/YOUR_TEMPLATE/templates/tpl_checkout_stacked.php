@@ -425,6 +425,34 @@ if(is_object($captcha)) {
     <!--EOF SHIPPING-->
 
     </div>
+
+    <!-- begin/comments -->
+    <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutComments">
+        <legend><?php echo TABLE_HEADING_COMMENTS; ?></legend>
+        <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_COMMENTS; ?></span>
+        
+        <?php echo zen_draw_textarea_field('comments', '45', '3'); ?>
+    </fieldset>
+    <!-- end/comments -->
+    
+    <!-- start/coditions -->
+    <?php
+        if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
+    ?>
+            <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutConditions">
+                <legend><?php echo TABLE_HEADING_CONDITIONS; ?></legend>
+                <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_CONDITIONS; ?></span>
+                
+                <div class="fec-information"><?php echo TEXT_CONDITIONS_DESCRIPTION;?></div>
+        
+                <?php echo  zen_draw_checkbox_field('conditions', '1', false, 'id="conditions"');?>
+                <label class="checkboxLabel" for="conditions"><?php echo TEXT_CONDITIONS_CONFIRM; ?></label>
+            </fieldset>
+    <?php
+      }
+    ?>
+    <!-- end/coditions -->
+
     <?php // ** BEGIN PAYPAL EXPRESS CHECKOUT **
     if (!$payment_modules->in_special_checkout()) {
       // ** END PAYPAL EXPRESS CHECKOUT ** ?>
@@ -686,7 +714,7 @@ if(is_object($captcha)) {
   if (FEC_CHECKBOX == 'true') {
     $checkbox = ($_SESSION['fec_checkbox'] == '1' ? true : false);
   ?>
-  <fieldset class="fec-fieldset" id="checkoutFECCheckbox">
+  <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutFECCheckbox">
       <legend><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></legend>
       <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_FEC_CHECKBOX; ?></span>
       
@@ -701,7 +729,7 @@ if(is_object($captcha)) {
   <?php 
     if (FEC_DROP_DOWN == 'true') {
   ?>
-  <fieldset class="fec-fieldset" id="checkoutDropdown">
+  <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutDropdown">
       <legend><?php echo TABLE_HEADING_DROPDOWN; ?></legend>
       <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_DROPDOWN; ?></span>
       
@@ -712,41 +740,17 @@ if(is_object($captcha)) {
     }
     if (FEC_GIFT_MESSAGE == 'true') {
   ?>
-  <fieldset class="fec-fieldset" id="giftMessage">
-  <legend><?php echo TABLE_HEADING_GIFT_MESSAGE; ?></legend>
-  <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_GIFT_MESSAGE; ?></span>
-  <?php echo zen_draw_textarea_field('gift-message', '45', '3', $_SESSION['gift-message']); ?>
+  <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="giftMessage">
+      <legend><?php echo TABLE_HEADING_GIFT_MESSAGE; ?></legend>
+      <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_GIFT_MESSAGE; ?></span>
+      <?php echo zen_draw_textarea_field('gift-message', '45', '3', $_SESSION['gift-message']); ?>
   </fieldset>
   <!-- eof DROP DOWN -->
 <?php
     }
 ?>
   
-  <!-- begin/comments -->
-  <fieldset class="fec-fieldset fec-block-checkout <?php echo $checkoutStyle; ?>" id="checkoutComments">
-      <legend><?php echo TABLE_HEADING_COMMENTS; ?></legend>
-      <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_COMMENTS; ?></span>
-      
-      <?php echo zen_draw_textarea_field('comments', '45', '3'); ?>
-      </fieldset>
-
-      <?php
-          if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
-      ?>
-              <fieldset class="fec-fieldset" id="checkoutConditions">
-                  <legend><?php echo TABLE_HEADING_CONDITIONS; ?></legend>
-                  <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_CONDITIONS; ?></span>
-                  
-                  <div class="fec-information"><?php echo TEXT_CONDITIONS_DESCRIPTION;?></div>
-          
-                  <?php echo  zen_draw_checkbox_field('conditions', '1', false, 'id="conditions"');?>
-                  <label class="checkboxLabel" for="conditions"><?php echo TEXT_CONDITIONS_CONFIRM; ?></label>
-              </fieldset>
-      <?php
-        }
-      ?>
-  </fieldset>
-  <!-- end/comments -->
+  
 
   <!-- include hidden payment attributes -->
   <?php 

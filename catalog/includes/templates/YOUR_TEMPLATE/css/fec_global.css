@@ -563,17 +563,23 @@
             margin-top: 0
         }
 
-        .fec-fieldset .fec-company {
+        .fec-fieldset .fec-company,
+        .fec-fieldset .fec-privacy {
             padding-bottom: 14px
         }
 
-        .fec-fieldset .fec-login-details,
-        .fec-fieldset .fec-privacy {
+        .fec-fieldset .fec-login-details {
             margin-top: -19px   
         }
 
         .fec-col-left #shippingField {
             margin-top: 0 !important;
             margin-bottom: 30px !important; /* fix space between .fec-login-details and this box */
+        }
+
+        .fec-no-account,
+        .fec-confidence,
+        .fec-paypal {
+            margin-bottom: 20px
         }
 
