@@ -16,6 +16,7 @@
 
 #checkoutPaymentForm {
 	float: right;
+	clear: right;
 }
 
 div#checkoutPaymentFormFull,
@@ -37,7 +38,8 @@ div#checkoutShippingFormsplit,
 div#checkoutOrderForm,
 #divcheckoutShippingMethods,
 #checkoutShippingForm,
-#checkoutComments {
+#checkoutComments,
+#checkoutConditions {
 	float: left;
 	clear: left;
 	/*width: 48%;*/
