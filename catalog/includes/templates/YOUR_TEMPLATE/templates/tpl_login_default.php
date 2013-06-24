@@ -71,7 +71,7 @@
       	    	
       	    	<?php echo zen_draw_form('create_account', zen_href_link(FILENAME_LOGIN, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . '<div>' . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_format', $email_format); ?>
                     <?php require($template->get_template_dir('tpl_modules_create_account.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_create_account.php'); ?>
-      		    		      <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_CONTINUE_ALT, BUTTON_CONTINUE_ALT); ?></div>
+      		    		      <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CREATE_ACCOUNT, BUTTON_CREATE_ACCOUNT_ALT); ?></div>
       		    	   </div>
       	    	</form>
     	    </fieldset>
