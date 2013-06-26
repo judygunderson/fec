@@ -1,8 +1,22 @@
+#mainWrapper {
+	overflow: hidden;
+}
+
+#checkout {
+	margin-left: -4%
+}
+
+	#checkout .fec-page-step {
+		margin-left: 4%
+	}
+
 /* non split */
+
 .fec-block-checkout {
-	width: 100%;
-	clear: both;
+	width: 96%;
+	overflow: hidden;
 	margin-bottom: 30px;
+	margin-left: 4%;
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -10,53 +24,18 @@
 }
 
 .fec-block-checkout.split {
-	
-	width: 48%
-}
-
-#checkoutPaymentForm {
-	float: right;
-	clear: right;
-}
-
-div#checkoutPaymentFormFull,
-div#checkoutPaymentFormsplitFull { 
-	margin-bottom: 30px;
-	float: none;
-}
-
-div#checkoutPaymentFormsplit,
-#checkout .fec-order-options {
-	float: right;
-	/*width: 48%;*/
-	clear: right;
-	margin-bottom: 30px;
-}
-
-div#checkoutOrderFormsplit,
-div#checkoutShippingFormsplit,
-div#checkoutOrderForm,
-#divcheckoutShippingMethods,
-#checkoutShippingForm,
-#checkoutComments,
-#checkoutConditions {
 	float: left;
-	clear: left;
-	/*width: 48%;*/
+	margin-left: 4%;
+    width: 46%;
 }
 
-div#checkoutPaymentFormsplitFull,
-#checkoutComments.fec-comments-splitFull {
-	clear: both;
-	width: auto;
-	float: none;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+.fec-order-options.split {
+	float: right !important
 }
 
 #checkout .fec-button-container {
-	clear: both;
+	clear: right;
+	float: right;
 	padding-bottom: 30px;
 	position: relative;
 	top: -10px
