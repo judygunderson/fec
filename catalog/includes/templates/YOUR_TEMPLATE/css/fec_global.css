@@ -514,7 +514,11 @@
 /* login/create acount */
 .fec-easy-sing-up .fec-col-left {
   float: left;
-  width: 63.510204081633%
+  width: 63.510204081633%;
+}
+.fec-easy-sing-up .fec-col-left.no-account {
+  float: left;
+  width: 100%;
 }
 
 .fec-easy-sing-up .fec-col-right {

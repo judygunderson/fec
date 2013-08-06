@@ -130,7 +130,7 @@
               <?php } ?>
               <?php
                   if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-                  <div class="buttonRow"><?php echo zen_image_submit(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
+                  <div class="buttonRow"><?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?></div>
               <?php } ?>
           </div> 
       </fieldset>
