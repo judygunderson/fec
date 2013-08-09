@@ -71,7 +71,7 @@
       	    	
       	    	<?php echo zen_draw_form('create_account', zen_href_link(FILENAME_LOGIN, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"') . '<div>' . zen_draw_hidden_field('action', 'process') . zen_draw_hidden_field('email_format', $email_format); ?>
                     <?php require($template->get_template_dir('tpl_modules_create_account.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_create_account.php'); ?>
-      		    		      <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_CONTINUE_ALT, BUTTON_CONTINUE_ALT); ?></div>
+      		    		      <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?></div>
       		    	   </div>
       	    	</form>
     	    </fieldset>
@@ -135,7 +135,7 @@
             <?php // ** BEGIN PAYPAL EXPRESS CHECKOUT ** 
             ?>
                 <?php 
-                    if ($ec_button_enabled) {
+                    if (defined('MODULE_PAYMENT_PAYPALWPP_ECS_BUTTON') && MODULE_PAYMENT_PAYPALWPP_ECS_BUTTON != 'Off') {
                 ?>
                         <fieldset class="fec-fieldset fec-paypal">
                             <legend><?php echo HEADING_PAYPAL; ?></legend>
@@ -242,11 +242,11 @@
               echo zen_draw_hidden_field('securityToken', $_SESSION['securityToken']);
             }
           ?>
-      </fieldset>
+      </fieldset><br class="clearBoth" />
           <div class="buttonRow forward"><?php echo zen_image_submit(BUTTON_IMAGE_LOGIN, BUTTON_LOGIN_ALT); ?></div>
           <div class="buttonRow back important"><?php echo '<a href="' . zen_href_link(FILENAME_PASSWORD_FORGOTTEN, '', 'SSL') . '">' . TEXT_PASSWORD_FORGOTTEN . '</a>'; ?></div>
       </form>
-      <div class="clearBoth"></div>
+      <br class="clearBoth" /><br class="clearBoth" />
       <!-- BEGIN CHECKOUT WITHOUT ACCOUNT -->
       <?php
         if (FEC_NOACCOUNT_SWITCH == 'true') {
