@@ -173,7 +173,6 @@
                               <?php
                   if ( ($n > 1) || ($n2 > 1) ) {
   
-<<<<<<< HEAD
       ?>
                       <div class="important fec-shipping-value"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][$j]['cost'], (isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0))); ?></div>
       <?php
@@ -196,33 +195,6 @@
                 if($quotes[$i]["id"] == "tellafriend") {
                   echo MODULE_SHIPPING_TELL_A_FRIEND_TEXT_CUSTOMER;
                   echo $tell_a_friend_email_error != "" ? "<div class='messageStackWarning'>$tell_a_friend_email_error</div>" : "";
-=======
-      <fieldset class="fec-discount">
-          <legend><?php echo $selection[$i]['module']; ?></legend>
-          <span class="fec-fieldset-legend-two"><?php echo $selection[$i]['module']; ?></span>
-          
-          <div class="fec-information">
-              <?php echo $selection[$i]['redeem_instructions']; ?>
-          </div>
-
-          <div class="gvBal larger"><?php echo $selection[$i]['checkbox']; ?></div>
-          
-          <div class="fec-field-inline">
-              <?php foreach ($selection[$i]['fields'] as $field) { ?>
-                  <?php echo $field['field']; ?> 
-                  <label class="inputLabel"<?php echo ($field['tag']) ? ' for="'.$field['field']['tag'].'"': ''; ?>><?php echo $field['title']; ?></label>      
-              <?php } ?>
-              <?php
-                  if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-                  <div class="buttonRow"><?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?></div>
-              <?php } ?>
-          </div> 
-      </fieldset>
-
-  <!--  
-  <?php
-        for ($j=0, $n2=sizeof($selection[$i]['fields']); $j<$n2; $j++) {
->>>>>>> 2acca37897a451f95c5720dddba327b839083e59
   ?>
                   <div class="tellAFriendContent" style="width:50%;"><strong>Email</strong></div>
                   <div class="tellAFriendContent" style="width:25%;"><strong>First Name</strong></div>
