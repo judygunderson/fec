@@ -2,35 +2,31 @@
 	overflow: hidden;
 }
 
-#checkout {
-	margin-left: -4%
+.checkout-columns {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-	#checkout .fec-page-step {
-		margin-left: 4%
-	}
+.checkout-leftcolumn,
+.checkout-rightcolumn {
+	float: none;
+}
+
+.checkout-leftcolumn.split-column,
+.checkout-rightcolumn.split-column {
+	float: left;
+    width: 48%;
+}
+
+.checkout-leftcolumn.split-column {
+	margin-right: 4%;
+}
 
 /* non split */
 
 .fec-block-checkout {
-	width: 96%;
-	overflow: hidden;
 	margin-bottom: 30px;
-	margin-left: 4%;
-
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.fec-block-checkout.split {
-	float: left;
-	margin-left: 4%;
-    width: 46%;
-}
-
-.fec-order-options.split {
-	float: right !important
 }
 
 #checkout .fec-button-container {

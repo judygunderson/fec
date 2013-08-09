@@ -37,11 +37,11 @@
                 <?php
                   if (DISPLAY_PRIVACY_CONDITIONS == 'true') {
                 ?>
-                <fieldset>
+                <fieldset class="fec-privacy">
                     <legend><?php echo TABLE_HEADING_PRIVACY_CONDITIONS; ?></legend>
                     <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_PRIVACY_CONDITIONS; ?></span>
 
-                    <div class="information"><?php echo TEXT_PRIVACY_CONDITIONS_DESCRIPTION;?></div>
+                    <div class="fec-information"><?php echo TEXT_PRIVACY_CONDITIONS_DESCRIPTION;?></div>
                     
                     <div class="fec-box-check-radio">
                         <?php echo zen_draw_checkbox_field('privacy_conditions', '1', false, 'id="privacy"');?>
