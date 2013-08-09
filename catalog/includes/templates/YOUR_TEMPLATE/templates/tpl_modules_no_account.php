@@ -25,7 +25,7 @@
     <div class="fec-easy-sing-up no-account-only">
 <?php } ?>
 
-    <div class="fec-col-left no-account">
+    <div class="fec-col-left">
         <fieldset class="fec-fieldset">
             <span class="fec-fieldset-legend">Guest Checkout</span> 
     
@@ -145,7 +145,7 @@
 
                                     <?php if ($flag_show_pulldown_states == true) { ?> 
                                         id="fec-state-2-field"
-                                    <?php } ?>
+                                    <? } ?>
 
                                 >
                                     <label class="inputLabel" for="state" id="stateLabel"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stText">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
@@ -297,7 +297,7 @@
 
                                     <?php if ($flag_show_pulldown_states == true) { ?> 
                                         id="fec-state-2-field-shipping"
-                                    <?php } ?>
+                                    <? } ?>
 
                                 >
                                     <label class="inputLabel" for="state" id="stateLabelShipping"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stTextShipping">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
@@ -385,13 +385,13 @@
 
                   <?php if (!isset($_GET['type']) || $_GET['type'] != 'free_virtual') { ?>
                       <?php 
-                          /*if (ACCOUNT_TELEPHONE == 'true') {
+                          if (ACCOUNT_TELEPHONE == 'true') {
                       ?>
                           <div class="fec-field">
                               <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE_NUMBER; ?> <span class="alert"><?php echo ENTRY_TELEPHONE_NUMBER_TEXT; ?></span></label>
                               <?php echo zen_draw_input_field('telephone', $_SESSION['telephone'], zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone"') . (zen_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '': ''); ?>
                           </div> <!-- end/telephone -->
-                      <?php }*/ ?>
+                      <?php } ?>
                   
                       <?php
                           if (ACCOUNT_FAX_NUMBER == 'true') {
