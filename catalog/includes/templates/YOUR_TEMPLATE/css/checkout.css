@@ -30,11 +30,13 @@
 }
 
 #checkout .fec-button-container {
-	clear: right;
+	/*clear: right;
 	float: right;
 	padding-bottom: 30px;
 	position: relative;
-	top: -10px
+	top: -10px*/
+	margin-top: 20px;
+	float: right;
 }
 
 /* checkout */

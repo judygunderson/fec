@@ -301,7 +301,7 @@
       <div id="checkoutPaymentForm" class="<?php echo $checkoutStyle; ?>">
           <!-- <h1 id="checkoutPaymentHeading"><?php echo $heading_title_payment; ?></h1> -->
                       
-          <fieldset class="fec-shipping-methods fec-block-checkout fec-fieldset" id="checkoutPayment">
+          <fieldset class="fec-billing-methods fec-block-checkout fec-fieldset" id="checkoutPayment">
               <legend><?php echo TABLE_HEADING_PAYMENT_METHOD; ?></legend>
               <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_PAYMENT_METHOD; ?></span>
               
@@ -384,6 +384,7 @@
                           <?php echo zen_draw_radio_field('payment', $selection[$i]['id'], ($selection[$i]['id'] == $_SESSION['payment'] ? true : false), 'id="pmt-'.$selection[$i]['id'].'"'); ?>
                   
                   <?php } ?>
+                  </div>
                   <?php } 
                       else { 
                   ?>
@@ -394,7 +395,6 @@
           
                   <label for="pmt-<?php echo $selection[$i]['id']; ?>" class="radioButtonLabel"><?php echo $selection[$i]['module']; ?></label>
     
-            </div>
           <?php
               if (defined('MODULE_ORDER_TOTAL_COD_STATUS') && MODULE_ORDER_TOTAL_COD_STATUS == 'true' and $selection[$i]['id'] == 'cod') {
           ?>
