@@ -172,13 +172,13 @@
                         
                     <?php if (ACCOUNT_TELEPHONE == 'true' || ACCOUNT_FAX_NUMBER == 'true') { ?>
 
-                        <?php if (ACCOUNT_TELEPHONE == 'true') { ?>
+                        <?php /*if (ACCOUNT_TELEPHONE == 'true') { ?>
                             
                             <div class="fec-field">
                                 <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE_NUMBER; ?> <span class="alert"> <?php echo ENTRY_TELEPHONE_NUMBER_TEXT; ?></span></label>
                                 <?php echo zen_draw_input_field('telephone', $_SESSION['telephone'], zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone"') . (zen_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '': ''); ?>
                             </div>
-                        <?php } ?>
+                        <?php }*/ ?>
                         <!-- end/phone shipping -->
 
                         <?php if (ACCOUNT_FAX_NUMBER == 'true') { ?>
@@ -385,13 +385,13 @@
 
                   <?php if (!isset($_GET['type']) || $_GET['type'] != 'free_virtual') { ?>
                       <?php 
-                          /*if (ACCOUNT_TELEPHONE == 'true') {
+                          if (ACCOUNT_TELEPHONE == 'true') {
                       ?>
                           <div class="fec-field">
                               <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE_NUMBER; ?> <span class="alert"><?php echo ENTRY_TELEPHONE_NUMBER_TEXT; ?></span></label>
                               <?php echo zen_draw_input_field('telephone', $_SESSION['telephone'], zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone"') . (zen_not_null(ENTRY_TELEPHONE_NUMBER_TEXT) ? '': ''); ?>
                           </div> <!-- end/telephone -->
-                      <?php }*/ ?>
+                      <?php } ?>
                   
                       <?php
                           if (ACCOUNT_FAX_NUMBER == 'true') {
