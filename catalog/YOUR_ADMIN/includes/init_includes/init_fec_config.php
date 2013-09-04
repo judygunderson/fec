@@ -13,50 +13,73 @@
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/new.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/new.php');
           $fec_version = '1.12.0';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.11.2':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_0.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_0.php');
           $fec_version = '1.12.0';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.12.0':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_1.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_1.php');
           $fec_version = '1.12.1';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.12.1':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_2.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_2.php');
           $fec_version = '1.12.2';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.12.2':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_3.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_3.php');
           $fec_version = '1.12.3';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.12.3':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_0.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_0.php');
           $fec_version = '1.13.0';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
       case '1.13.0':
         // perform upgrade
         if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_1.php')) {
           include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_1.php');
           $fec_version = '1.13.1';          
-        }
-        break;
+						break;
+          } else {
+         	 	break 2;
+					}
+      case '1.13.1':
+        // perform upgrade
+        if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_2.php')) {
+          include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_2.php');
+          $fec_version = '1.13.2';          
+						break;
+          } else {
+         	 	break 2;
+					}					
       default:
         $fec_version = $current_version;
         // break all the loops

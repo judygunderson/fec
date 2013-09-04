@@ -570,7 +570,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
 // If a newsletter only account exists we update the info,
 // but keep the subscription active, and give them a message that to
 // change they should do so on their account page (after creation).
-    if(defined('NEWSONLY_SUBSCRIPTION_ENABLED') && (NEWSONLY_SUBSCRIPTION_ENABLED=='true')) {
+    if(defined('NEWSONLY_SUBSCRIPTION_ENABLED') && (NEWSONLY_SUBSCRIPTION_ENABLED=='true') && defined('TABLE_SUBSCRIBERS')) {
       $check_subscribers_query = "select count(*) as total from " . TABLE_SUBSCRIBERS . "
                     where email_address = '" . zen_db_input($email_address) . "' ";
       $check_subscribers = $db->Execute($check_subscribers_query);
@@ -581,7 +581,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
                 confirmed = '1' 
                 WHERE email_address = '" . zen_db_input($email_address) . "' ";
         $db->Execute($sql);
-        $messageStack->add_session('login', SUBSCRIBE_MERGED_NEWSONLY_ACCT);
+        if (defined('SUBSCRIBE_MERGED_NEWSONLY_ACCT')) $messageStack->add_session('login', SUBSCRIBE_MERGED_NEWSONLY_ACCT);
       } else {
         if (!empty($newsletter)) {
           $sql = "INSERT INTO " . TABLE_SUBSCRIBERS . " 
