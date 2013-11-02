@@ -194,7 +194,18 @@ $order_total_modules->pre_confirmation_check();
 
 // load the selected payment module
 require(DIR_WS_CLASSES . 'payment.php');
-if ($credit_covers) {
+// BEGIN REWARDS POINTS
+
+// if credit does not cover order total or isn't   selected
+  if ($_SESSION['credit_covers'] != true) {
+  // check that a gift   voucher isn't being used that is larger than the order
+    if ($_SESSION['cot_gv'] < $order->info['total']) {
+      $credit_covers =   false;
+    }
+  }
+// END REWARDS POINTS
+
+if ($credit_covers || $_SESSION['credit_covers'] || $order->info['total'] == 0) {
   unset($_SESSION['payment']);
   $_SESSION['payment'] = '';
 }
