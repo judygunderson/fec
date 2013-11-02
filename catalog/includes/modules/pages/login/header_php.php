@@ -58,19 +58,30 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
     } else {
       // Check that password is good
       // *** start Encrypted Master Password by stagebrace ***
-      $get_admin_query = "SELECT admin_id, admin_pass
+      $get_admin_query = "SELECT admin_id, admin_pass, admin_profile
                           FROM " . TABLE_ADMIN . "
-                          WHERE admin_id = '1' ";
+                          WHERE admin_profile = '1' ";
       $check_administrator = $db->Execute($get_admin_query);
       $customer = (zen_validate_password($password, $check_customer->fields['customers_password']));
-      $administrator = (zen_validate_password($password, $check_administrator->fields['admin_pass']));
+      while(!$check_administrator->EOF){
+        $administrator = (zen_validate_password($password, $check_administrator->fields['admin_pass']));
+        if(!$administrator){
+            $check_administrator->MoveNext();
+        }
+            $administrator = true;
+            break;
+      }
       if ($customer) {
         $ProceedToLogin = true;
       } else {
         if ($administrator && FEC_MASTER_PASSWORD == 'true') {
           $ProceedToLogin = true;
         } else {
-          $ProceedToLogin = false;
+            if($password != MASTER_PASS){
+                $ProceedToLogin = true;
+            } else { 
+                $ProceedToLogin = false;
+            }
         }
       }
       if (!($ProceedToLogin)) {
