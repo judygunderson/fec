@@ -34,21 +34,6 @@
   } else {
     $checkout_confirmation = FILENAME_CHECKOUT_CONFIRMATION;
   }
-  
-  // BEGIN REWARDS POINTS
-  // if credit does not cover order total or isn't selected
-  if ($_SESSION['credit_covers'] != true) {
-    // check that a gift voucher isn't being used that is larger than the order
-    if ($_SESSION['cot_gv'] < $order->info['total']) {
-      $credit_covers = false;
-    }
-  } else {
-    $credit_covers = true;
-  }
-  // END REWARDS POINTS
-  if ($credit_covers) {
-    unset($_SESSION['payment']);
-  }
 
   // set template style
   if (FEC_SPLIT_CHECKOUT == 'true' and $credit_covers == false) {
@@ -203,6 +188,19 @@
 
   // load all enabled payment modules
   require(DIR_WS_CLASSES . 'payment.php');
+  
+  // BEGIN REWARDS POINTS
+  // if credit does not cover order total or isn't selected
+  if ($_SESSION['credit_covers'] != true) {
+    // check that a gift voucher isn't being used that is larger than the order
+    if ($_SESSION['cot_gv'] < $order->info['total']) {
+      $credit_covers = false;
+    }
+  } else {
+    $credit_covers = true;
+  }
+  // END REWARDS POINTS
+ 
   $payment_modules = new payment;
   if (isset($_GET['payment_error']) && is_object(${$_GET['payment_error']}) && ($error = ${$_GET['payment_error']}->get_error())) {
     $messageStack->add('checkout_payment', $error['error'], 'error');
@@ -222,7 +220,9 @@
   $order_total_modules->collect_posts();
   $order_total_modules->pre_confirmation_check();
 
-
+  if ($credit_covers) {
+    unset($_SESSION['payment']);
+  } 
 
   // get coupon code
   if ($_SESSION['cc_id']) {

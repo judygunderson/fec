@@ -187,25 +187,26 @@ if (!$_SESSION['shipping']) {
   zen_redirect(zen_href_link(FILENAME_CHECKOUT, '', 'SSL'));
 }
 
+// load the selected payment module
+require(DIR_WS_CLASSES . 'payment.php');
+
+// BEGIN REWARDS POINTS
+// if credit does not cover order total or isn't   selected
+  if ($_SESSION['credit_covers'] != true) {
+  // check that a gift voucher isn't being used that is larger than the order
+    if ($_SESSION['cot_gv'] < $order->info['total']) {
+      $credit_covers = false;
+    }
+  }
+// END REWARDS POINTS
+
 require(DIR_WS_CLASSES . 'order_total.php');
 $order_total_modules = new order_total;
 $order_total_modules->collect_posts();
 $order_total_modules->pre_confirmation_check();
 
-// load the selected payment module
-require(DIR_WS_CLASSES . 'payment.php');
-// BEGIN REWARDS POINTS
-
-// if credit does not cover order total or isn't   selected
-  if ($_SESSION['credit_covers'] != true) {
-  // check that a gift   voucher isn't being used that is larger than the order
-    if ($_SESSION['cot_gv'] < $order->info['total']) {
-      $credit_covers =   false;
-    }
-  }
-// END REWARDS POINTS
-
 if ($credit_covers || $_SESSION['credit_covers'] || $order->info['total'] == 0) {
+  $credit_covers = true;
   unset($_SESSION['payment']);
   $_SESSION['payment'] = '';
 }
