@@ -567,53 +567,14 @@
               <div class="fec-field-inline">
                   <?php foreach ($selection[$i]['fields'] as $field) { ?>
                       <?php echo $field['field']; ?> 
-                      <label class="inputLabel"<?php echo ($field['tag']) ? ' for="'.$field['field']['tag'].'"': ''; ?>><?php echo $field['title']; ?></label>      
+                      <label class="inputLabel"<?php echo ($field['tag']) ? ' for="'.$field['tag'].'"': ''; ?>><?php echo $field['title']; ?></label>      
                   <?php } ?>
                   <?php
                       if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-                      <div class="buttonRow"><?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?></div>
+                      <div class="buttonRow"><?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT, 'onclick="updateForm();"'); ?></div>
                   <?php } ?>
               </div> 
           </fieldset>
-    
-      <!--  
-      <?php
-            for ($j=0, $n2=sizeof($selection[$i]['fields']); $j<$n2; $j++) {
-      ?>
-      
-      <?php   if(!($COWOA && $selection[$i]['module']==MODULE_ORDER_TOTAL_GV_TITLE)) { ?>
-    
-        <?php 
-                $continue_discount = true;
-                if ( (($selection[$i]['module']) == MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($order->content_type == 'virtual') ) { 
-                  $continue_discount = false;
-                  $_SESSION['insurance'] = $_SESSION['opt_insurance'] = '0';
-                }
-                if ($continue_discount == true) {
-        ?>
-      <div class="discountForm<?php echo $selectionStyle; ?> discount<?php echo $box; ?>">
-        <fieldset class="discount">
-        <legend><?php echo $selection[$i]['module']; ?></legend>
-        <?php echo $selection[$i]['redeem_instructions']; ?>
-        <div class="gvBal larger"><?php echo $selection[$i]['checkbox']; ?></div>
-        <div class="gvBal">
-          <label class="inputLabel"<?php echo ($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>      
-          <?php   echo $selection[$i]['fields'][$j]['field']; ?>
-          <?php   if ( ($selection[$i]['module'] != MODULE_ORDER_TOTAL_INSURANCE_TITLE) && ($selection[$i]['module'] != MODULE_ORDER_TOTAL_SC_TITLE) ) { ?>
-          <div class="buttonRow"><?php echo zen_image_submit(zen_output_string($template->get_template_dir(BUTTON_IMAGE_UPDATE, DIR_WS_TEMPLATE, $current_page_base, 'buttons/' . $_SESSION['language'] . '/') . BUTTON_IMAGE_UPDATE), BUTTON_UPDATE_ALT, '', '', 'onclick="updateForm();"'); ?></div>
-          <?php   } ?>  
-        </div>
-        </fieldset>
-      </div>
-      <?php       if ($selectionStyle == 'split' && ($box == 'even')) { echo '<br class="clearBoth" />'; } ?>
-        
-      <?php     } ?> 
-        
-        
-      <?php   }
-            }
-      ?>
-    -->
       <?php
           }
       ?>
