@@ -291,7 +291,7 @@
     
       <?php } ?>
       <?php
-        if ($credit_covers != true) { 
+        if ($credit_covers != true && !$_SESSION['credit_covers']) { 
           if ($order->content_type == 'virtual') {
             $checkoutStyle .= "Full";
             echo '<br class="clearBoth" />';

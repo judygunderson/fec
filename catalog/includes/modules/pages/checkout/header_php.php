@@ -35,7 +35,6 @@
     $checkout_confirmation = FILENAME_CHECKOUT_CONFIRMATION;
   }
   
-  //
   // BEGIN REWARDS POINTS
   // if credit does not cover order total or isn't selected
   if ($_SESSION['credit_covers'] != true) {
@@ -43,6 +42,8 @@
     if ($_SESSION['cot_gv'] < $order->info['total']) {
       $credit_covers = false;
     }
+  } else {
+    $credit_covers = true;
   }
   // END REWARDS POINTS
   if ($credit_covers) {
