@@ -62,14 +62,13 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
                           FROM " . TABLE_ADMIN . "
                           WHERE admin_profile = '1' ";
       $check_administrator = $db->Execute($get_admin_query);
-      $customer = (zen_validate_password($password, $check_customer->fields['customers_password']));
+      $customer = zen_validate_password($password, $check_customer->fields['customers_password']);
       while(!$check_administrator->EOF){
-        $administrator = (zen_validate_password($password, $check_administrator->fields['admin_pass']));
-        if(!$administrator){
-            $check_administrator->MoveNext();
+        $administrator = zen_validate_password($password, $check_administrator->fields['admin_pass']);
+        if ($administrator){
+          break;
         }
-            $administrator = true;
-            break;
+        $check_administrator->MoveNext();
       }
       if ($customer) {
         $ProceedToLogin = true;
@@ -77,7 +76,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
         if ($administrator && FEC_MASTER_PASSWORD == 'true') {
           $ProceedToLogin = true;
         } else {
-            if($password != MASTER_PASS){
+            if($password == MASTER_PASS){
                 $ProceedToLogin = true;
             } else { 
                 $ProceedToLogin = false;
