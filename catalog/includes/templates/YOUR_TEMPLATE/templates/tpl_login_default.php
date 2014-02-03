@@ -193,7 +193,7 @@
 
       <fieldset class="fec-fieldset fec-box">
           <legend><?php echo HEADING_RETURNING_CUSTOMER_SPLIT; ?></legend>
-          <span class="fec-fieldset-legend"><?php echo HEADING_NEW_CUSTOMER_SPLIT; ?></span>
+          <span class="fec-fieldset-legend"><?php echo HEADING_RETURNING_CUSTOMER_SPLIT; ?></span>
 
           <div class="fec-information"><?php echo TEXT_RETURNING_CUSTOMER_SPLIT; ?></div>
 
