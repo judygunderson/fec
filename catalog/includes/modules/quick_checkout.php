@@ -24,6 +24,8 @@ if (!defined('IS_ADMIN_FLAG')) {
   $state = '';
   $zone_id = 0;
   $error = false;
+  $email_format = (ACCOUNT_EMAIL_PREFERENCE == '1' ? 'HTML' : 'TEXT');
+  $newsletter = (ACCOUNT_NEWSLETTER_STATUS == '1' ? false : true);
   $shippingAddress = false;
   
   $process_shipping = false;
@@ -99,7 +101,6 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
     $customers_referral = zen_db_prepare_input($_POST['customers_referral']);
     // create password for no account
     $password=zen_create_random_value(15, 'mixed');
-    $cowoa = 1;
     // set default for country if free / virtual to avoid PHP errors in admin
     if (isset($_GET['type']) || $_GET['type'] == 'free_virtual') {
       $country = STORE_COUNTRY;
@@ -397,25 +398,22 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
                               'customers_email_format' => $email_format,
                               'customers_default_address_id' => 0,
                               'customers_password' => zen_encrypt_password($password),
-                              'COWOA_account' => $cowoa,
+                              'COWOA_account' => 1,
                               'customers_authorization' => (int)CUSTOMERS_APPROVAL_AUTHORIZATION
       );
       
-      // Start new COWOA
-      $cowoa_accounts = 0;
-      if (FEC_NOACCOUNT_COMBINE == 'true') {
-        // check for previous COWOA account
-        $cowoa_account_query = "SELECT customers_id, customers_default_address_id FROM " . TABLE_CUSTOMERS . " 
-                                WHERE COWOA_account = 1 AND customers_email_address = '" . $email_address . "'
-                                ORDER BY customers_id DESC
-                                LIMIT 1;";
-        $cowoa_account = $db->Execute($cowoa_account_query);
-        $cowoa_accounts = $cowoa_account->RecordCount();
-      }
-      if ($cowoa_accounts > 0) {
-        $_SESSION['customer_id'] = $cowoa_account->fields['customers_id'];
+      $previous_accounts = 0;
+      // check for previous accounts
+      $previous_account_query = "SELECT customers_id, customers_default_address_id FROM " . TABLE_CUSTOMERS . " 
+                              WHERE customers_email_address = '" . $email_address . "'
+                              ORDER BY customers_id DESC
+                              LIMIT 1;";
+      $previous_account = $db->Execute($previous_account_query);
+      $previous_accounts = $previous_account->RecordCount();
+      if ($previous_accounts > 0) {
+        $_SESSION['customer_id'] = $previous_account->fields['customers_id'];
         $sql_data_array['customers_id'] = $_SESSION['customer_id'];
-        $address_id = $cowoa_account->fields['customers_default_address_id'];
+        $address_id = $previous_account->fields['customers_default_address_id'];
         $sql_data_array['customers_default_address_id'] = $address_id; 
         $db_action = 'update';
         $db_customers_table_where = 'customers_id = ' . $_SESSION['customer_id'];

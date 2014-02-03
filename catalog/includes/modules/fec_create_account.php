@@ -452,24 +452,22 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
                             'customers_authorization' => (int)CUSTOMERS_APPROVAL_AUTHORIZATION
     );
 
-    // Start new COWOA
-    // check if COWOA account exists for email_address
-    $cowoa_accounts = 0;
-    if (FEC_NOACCOUNT_COMBINE == 'true') {
-      $cowoa_account = $db->Execute("SELECT customers_id, customers_default_address_id FROM " . TABLE_CUSTOMERS . " 
-                                     WHERE customers_email_address = '" . $email_address . "'
-                                     ORDER BY customers_id DESC
-                                     LIMIT 1;");
-      $cowoa_accounts = $cowoa_account->RecordCount();
-    }
-    if ($cowoa_accounts > 0) {
-      // cowoa account exists, use that
+    $previous_accounts = 0;
+    // check for previous accounts
+    $previous_account_query = "SELECT customers_id, customers_default_address_id FROM " . TABLE_CUSTOMERS . " 
+                            WHERE customers_email_address = '" . $email_address . "'
+                            ORDER BY customers_id DESC
+                            LIMIT 1;";
+    $previous_account = $db->Execute($previous_account_query);
+    $previous_accounts = $previous_account->RecordCount();
+    if ($previous_accounts > 0) {
+      $_SESSION['customer_id'] = $previous_account->fields['customers_id'];
+      $sql_data_array['customers_id'] = $_SESSION['customer_id'];
+      $sql_data_array['customers_default_address_id'] = $address_id = $previous_account->fields['customers_default_address_id'];
+      $sql_data_array['COWOA_account'] = 0; 
       $db_action = 'update';
-      $sql_data_array['customers_id'] = $_SESSION['customer_id'] = $cowoa_account->fields['customers_id'];
-      $sql_data_array['customers_default_address_id'] = $address_id = $cowoa_account->fields['customers_default_address_id'];
-      $sql_data_array['COWOA_account'] = 0;
-      $db_customers_where = 'customers_id = "' . $cowoa_account->fields['customers_id'] . '"'; 
-    } else {
+      $db_customers_where = 'customers_id = ' . $_SESSION['customer_id'];
+    } else {       
       $db_action = 'insert';
       $db_customers_where = '';
     }

@@ -4,7 +4,7 @@
   }
   // add upgrade script
   $fec_version = (defined('FAST_AND_EASY_CHECKOUT_VERSION') ? FAST_AND_EASY_CHECKOUT_VERSION : 'new');
-  $current_version = '1.14.2'; // change this each time a new version is ready to release
+  $current_version = '1.14.3'; // change this each time a new version is ready to release
   while ($fec_version != $current_version) {
     switch($fec_version) {
     	// add case for each previous version
@@ -106,7 +106,16 @@
 						break;
           } else {
          	 	break 2;
-					}																				
+					}
+      case '1.14.2':
+        // perform upgrade
+        if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_3.php')) {
+          include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_3.php');
+          $fec_version = '1.14.3';          
+						break;
+          } else {
+         	 	break 2;
+					}																									
       default:
         $fec_version = $current_version;
         // break all the loops
