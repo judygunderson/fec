@@ -87,17 +87,20 @@
 						}        		
 					}
 				}
+				/* 
+				// doesn't appear to be used before the redirect
         $configuration_query = 'select configuration_key as cfgkey, configuration_value as cfgvalue
                           from ' . $configuration_table . $demo_where;
 
         $configuration = $db->Execute($configuration_query);
-
+        */
         // set the WARN_BEFORE_DOWN_FOR_MAINTENANCE to false if DOWN_FOR_MAINTENANCE = true
         if ( (WARN_BEFORE_DOWN_FOR_MAINTENANCE == 'true') && (DOWN_FOR_MAINTENANCE == 'true') ) {
 	        $db->Execute("update " . $configuration_table . "
 	                      set configuration_value = 'false', last_modified = '" . NOW . "'
 	                      where configuration_key = 'WARN_BEFORE_DOWN_FOR_MAINTENANCE'" . $demo_where_and); 
-        } 
+        }
+        //die(); 
         zen_redirect(zen_href_link(FILENAME_CONFIGURATION, 'gID=' . $_GET['gID']));
         break;
     }
@@ -137,7 +140,26 @@
 				// create a new tab
 				$tabs[$configuration->fields['configuration_tab']] = array('options' => array());
 			}
-			if ($configuration->fields['configuration_tab'] == '') $configuration->fields['configuration_tab'] = 'General';		
+			if ($configuration->fields['configuration_tab'] == '') $configuration->fields['configuration_tab'] = 'General';
+	    /*
+	    // this code has been deliberately left out as it's only needed for previewing configuration values.  Our configuration page has no preview.
+	    if (zen_not_null($configuration->fields['use_function'])) {
+	      $use_function = $configuration->fields['use_function'];
+	      if (preg_match('/->/', $use_function)) {
+	        $class_method = explode('->', $use_function);
+	        if (!is_object(${$class_method[0]})) {
+	          include(DIR_WS_CLASSES . $class_method[0] . '.php');
+	          ${$class_method[0]} = new $class_method[0]();
+	        }
+	        $cfgValue = zen_call_function($class_method[1], $configuration->fields['configuration_value'], ${$class_method[0]});
+	      } else {
+	        $cfgValue = zen_call_function($use_function, $configuration->fields['configuration_value']);
+	        echo $cfgValue;
+	      }
+	    } else {
+	      $cfgValue = $configuration->fields['configuration_value'];
+	    }
+	    */					
 			$tabs[$configuration->fields['configuration_tab']]['options'][] = array(
 				'configuration_id' => $configuration->fields['configuration_id'], 
 				'configuration_title' => $configuration->fields['configuration_title'],

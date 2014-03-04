@@ -10,10 +10,10 @@
 // This should be first line of the script:
 $zco_notifier->notify('NOTIFY_HEADER_START_ACCOUNT_HISTORY_INFO');
 
-if (!isset($_POST['order_id']) || (isset($_POST['order_id']) && !is_numeric($_POST['order_id'])))
+if (!isset($_REQUEST['order_id']) || (isset($_REQUEST['order_id']) && !is_numeric($_REQUEST['order_id'])))
   $errorInvalidID=TRUE;
 
-$query_email_address = trim($_POST['query_email_address']);  
+$query_email_address = trim($_REQUEST['query_email_address']);  
 if(!isset($query_email_address) || zen_validate_email($query_email_address) == false)
   $errorInvalidEmail=TRUE;
 
