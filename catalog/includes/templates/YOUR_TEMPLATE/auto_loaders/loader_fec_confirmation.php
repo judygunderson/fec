@@ -16,6 +16,7 @@ $loaders[] = array('conditions' => array('pages' => array(FILENAME_FEC_CONFIRMAT
                     ),
                     'css_files' => array(
                       'fec_global.css' => 1,
-                      'fec_confirmation.css' => 1
+                      'fec_confirmation.css' => 2,
+                      'auto_loaders/fec_confirmation_overrides.css' => 3
                     )
 								);  
