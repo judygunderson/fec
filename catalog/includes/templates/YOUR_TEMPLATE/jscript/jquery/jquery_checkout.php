@@ -44,4 +44,10 @@ function updateForm() {
   });
   jQuery('div#checkout form').submit(); 
 }
+
+jQuery(document).ready(function() {
+  jQuery('.fec_discount .button_update').click(function() {
+  	return updateForm();
+  });
+});
 //--></script>
