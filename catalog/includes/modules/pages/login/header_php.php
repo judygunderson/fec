@@ -57,45 +57,38 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
       $messageStack->add('login', TEXT_LOGIN_BANNED);
     } else {
       // Check that password is good
-      // *** start Encrypted Master Password by stagebrace ***
-      $get_admin_query = "SELECT admin_id, admin_pass, admin_profile
-                          FROM " . TABLE_ADMIN . "
-                          WHERE admin_profile = '1' ";
-      $check_administrator = $db->Execute($get_admin_query);
-      $customer = (zen_validate_password($password, $check_customer->fields['customers_password']));
-//echo "ps=$password - $customer<br>";
-//echo $check_customer->fields['customers_password'];
-      while(!$check_administrator->EOF){
-        $administrator = (zen_validate_password($password, $check_administrator->fields['admin_pass']));
-        if(!$administrator){
-            $check_administrator->MoveNext();
-        }
-            $administrator = true;
-            break;
-      }
-      if ($customer) {
-
-        $ProceedToLogin = true;
-      } else {
-        if ($administrator && FEC_MASTER_PASSWORD == 'true') {
-$adminlogintrue=1;
+      if (FEC_MASTER_PASSWORD == 'true') {
+        // *** start Encrypted Master Password by stagebrace ***
+        $get_admin_query = "SELECT admin_id, admin_pass, admin_profile
+                            FROM " . TABLE_ADMIN . "
+                            WHERE admin_profile = '1' ";
+        $check_administrator = $db->Execute($get_admin_query);
+        // master password third party plugin
+        if (defined('MASTER_PASS') && MASTER_PASS == $password) {
+          $administrator = true;
+          $ProceedToLogin = true; 
+		} else {
+		  // encrypted master password plugin
+          while(!$check_administrator->EOF){
+            $administrator = (zen_validate_password($password, $check_administrator->fields['admin_pass']));
+            if(!$administrator){
+              $check_administrator->MoveNext();
+            } else {
+              $administrator = true;
+              $ProceedToLogin = true;
+              break;
+		    }
+      	  }
+		}
+	  }
+	  // if admin login didn't work, try the customer
+	  if (!$ProceedToLogin) {
+	    $customer = (zen_validate_password($password, $check_customer->fields['customers_password']));
+        if ($customer) {
           $ProceedToLogin = true;
-        } else {
-            if($password != MASTER_PASS){
-
-                $ProceedToLogin = true;
-            } else { 
-
-                $ProceedToLogin = false;
-            }
-if(!$password && $adminlogintrue !=1){
-$ProceedToLogin = false;
-}
         }
-      }
-      if (!($ProceedToLogin)) {
-    // *** end Encrypted Master Password by stagebrace ***
-      //if (!zen_validate_password($password, $check_customer->fields['customers_password'])) {
+	  }
+      if (!$ProceedToLogin) {
         $error = true;
         $messageStack->add('login', TEXT_LOGIN_ERROR);
       } else {
