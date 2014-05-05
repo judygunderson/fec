@@ -190,7 +190,19 @@ while ($fec_version != $current_version)
             else
               {
                 break 2;
-              }                                           
+              }
+        case '1.14.6':
+            // perform upgrade
+            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_7.php'))
+              {
+                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_7.php');
+                $fec_version = '1.14.7';
+                break;
+              }
+            else
+              {
+                break 2;
+              }  
         default:
             $fec_version = $current_version;
             // break all the loops
