@@ -32,7 +32,7 @@ $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, con
 ('Confirm Email', 'FEC_CONFIRM_EMAIL', 'false', 'Require user to enter email twice for confirmation?', " . $configuration_group_id . ", 24, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 ('Shipping Address', 'FEC_SHIPPING_ADDRESS', 'true', 'Display the shipping address form on the login and COWOA pages?', " . $configuration_group_id . ", 25, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 ('Copy Billing', 'FEC_COPYBILLING', 'true', 'If the shipping address form is enabled, should the copy billing address checkbox be checked by default?', " . $configuration_group_id . ", 26, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
-('Master Password', 'FEC_MASTER_PASSWORD', 'false', 'Allow login to customer account using master password??', " . $configuration_group_id . ", 27, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
+('Master Password', 'FEC_MASTER_PASSWORD', 'false', 'Allow login to customer account using master password? (Must be using ZenCart v1.5.0 or higher)', " . $configuration_group_id . ", 27, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 
 ('Checkout Without Account', 'FEC_NOACCOUNT_SWITCH', 'true', 'Activate Checkout Without an Account?', " . $configuration_group_id . ", 30, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 ('Checkout Without Account Only', 'FEC_NOACCOUNT_ONLY_SWITCH', 'false', 'Disable regular login/registration and force Checkout Without an Account?', " . $configuration_group_id . ", 31, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
