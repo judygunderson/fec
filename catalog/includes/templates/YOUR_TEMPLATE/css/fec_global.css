@@ -77,6 +77,6 @@
 #checkout .fec-container,.fec-container .fec-information p{padding:0;}
 .fec-fieldset br,.fec-fieldset legend,#fec-state-2-field,#fec-state-2-field-shipping,#fec-state-2-field label,#fec-state-2-field-shipping label{display:none;}
 .fec-button-container .buttonRow.forward,.fec-fieldset .fec-billing-address,.fec-fieldset .fec-company,.fec-fieldset .fec-date-birth,.fec-fieldset .fec-privacy{margin-top:0;}
-@media screen and -webkit-min-device-pixel-ratio0 {
+@media screen and (-webkit-min-device-pixel-ratio:0) {
 .fec-container .cssButton,.fec-container .cssButtonHover{padding:6px 7px;}
 }
