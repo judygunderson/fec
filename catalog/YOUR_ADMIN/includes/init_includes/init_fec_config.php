@@ -1,211 +1,55 @@
 <?php
-if (!defined('IS_ADMIN_FLAG'))
-  {
+  if (!defined('IS_ADMIN_FLAG')) {
     die('Illegal Access');
-  }
-// add upgrade script
-$fec_version     = (defined('FAST_AND_EASY_CHECKOUT_VERSION') ? FAST_AND_EASY_CHECKOUT_VERSION : 'new');
-$current_version = '1.14.6'; // change this each time a new version is ready to release
-while ($fec_version != $current_version)
-  {
-    switch ($fec_version)
-    {
-        // add case for each previous version
-        case 'new':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/new.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/new.php');
-                $fec_version = '1.12.0';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.11.2':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_0.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_0.php');
-                $fec_version = '1.12.0';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.12.0':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_1.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_1.php');
-                $fec_version = '1.12.1';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.12.1':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_2.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_2.php');
-                $fec_version = '1.12.2';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.12.2':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_12_3.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_12_3.php');
-                $fec_version = '1.12.3';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.12.3':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_0.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_0.php');
-                $fec_version = '1.13.0';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.13.0':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_1.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_1.php');
-                $fec_version = '1.13.1';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.13.1':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_13_2.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_13_2.php');
-                $fec_version = '1.13.2';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.13.2':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_0.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_0.php');
-                $fec_version = '1.14.0';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.0':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_1.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_1.php');
-                $fec_version = '1.14.1';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.1':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_2.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_2.php');
-                $fec_version = '1.14.2';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.2':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_3.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_3.php');
-                $fec_version = '1.14.3';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.3':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_4.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_4.php');
-                $fec_version = '1.14.4';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.4':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_5.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_5.php');
-                $fec_version = '1.14.5';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.5':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_6.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_6.php');
-                $fec_version = '1.14.6';
-                break;
-              }
-            else
-              {
-                break 2;
-              }
-        case '1.14.6':
-            // perform upgrade
-            if (file_exists(DIR_WS_INCLUDES . 'installers/fec/1_14_7.php'))
-              {
-                include_once(DIR_WS_INCLUDES . 'installers/fec/1_14_7.php');
-                $fec_version = '1.14.7';
-                break;
-              }
-            else
-              {
-                break 2;
-              }  
-        default:
-            $fec_version = $current_version;
-            // break all the loops
-            break 2;
+  }   
+ 
+ $module_constant = 'FEAC_VERSION';
+ $module_installer_directory =  DIR_FS_ADMIN.'includes/installers/feac';
+ $module_name = "Fast and Easy Checkout"; 
+
+ 
+ //Just change the stuff above... Nothing down here should need to change
+ if(defined('FEAC_VERSION')) 
+     { 
+        $current_version =  FEAC_VERSION; 
+     } 
+     else { 
+        $current_version = "0.0.0"; 
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION_GROUP . " (configuration_group_title, configuration_group_description, sort_order, visible) VALUES ('".$module_name."', 'Set ".$module_name." Options', '1', '1');");
+        $configuration_group_id = $db->Insert_ID();
+
+        $db->Execute("UPDATE " . TABLE_CONFIGURATION_GROUP . " SET sort_order = " . $configuration_group_id . " WHERE configuration_group_id = " . $configuration_group_id . ";");
+
+        $db->Execute("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES
+                    ('Version', '".$module_constant."', '0.0.0', 'Version installed:', " . $configuration_group_id . ", 0, NOW(), NOW(), NULL, NULL);"); 
+ }
+    if($configuration_group_id == ''){
+       $config = $db->Execute("SELECT configuration_group_id FROM ".TABLE_CONFIGURATION." WHERE configuration_key= '".$module_constant."'");
+       $configuration_group_id = $config->fields['configuration_group_id'];
     }
-  }
+                //remove old new_install.php as it's not needed anymore - this only pertians to upgrades
+                    $old_new_install_file = $module_installer_directory.'/'.'new.php';
+                    if ( file_exists( $old_new_install_file ) ) {
+                    $fh = fopen($old_new_install_file, 'w');
+                    fwrite($fh, '');
+                    fclose($fh);
+                    unlink( $old_new_install_file );
+                    }
+
+    
+ $installers = scandir($module_installer_directory, 1);
+ 
+ $newest_version = $installers[0];
+ $newest_version = substr($newest_version,0,-4);
+ 
+ sort($installers);
+ if(version_compare($newest_version, $current_version) > 0){
+     foreach ($installers as $installer) {
+         if(version_compare($newest_version, substr($installer,0,-4) ) >= 0 && version_compare($current_version, substr($installer,0,-4) ) < 0 ){
+         include($module_installer_directory.'/'.$installer);
+         $current_version = str_replace("_", ".", substr($installer,0,-4));
+         $db->Execute("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = '".$current_version."' WHERE configuration_key = '".$module_constant."' LIMIT 1;");
+         $messageStack->add("Installed ".$module_name." v".$current_version, 'success');
+         }
+     }     
+ }
