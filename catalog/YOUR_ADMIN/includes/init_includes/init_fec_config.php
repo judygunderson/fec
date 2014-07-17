@@ -4,7 +4,7 @@
   }   
  
  $module_constant = 'FEAC_VERSION';
- $module_installer_directory =  DIR_FS_ADMIN.'includes/installers/feac';
+ $module_installer_directory =  DIR_FS_ADMIN.'includes/installers/fec';
  $module_name = "Fast and Easy Checkout"; 
 
  
