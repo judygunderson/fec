@@ -708,7 +708,7 @@
           <span class="fec-fieldset-legend"><?php echo TABLE_HEADING_DROPDOWN; ?></span>
           
           <label><?php echo TEXT_DROP_DOWN; ?></label>
-          <?php echo zen_draw_pull_down_menu('dropdown', $dropdown_list_array, $_SESSION['dropdown'], 'onchange="updateForm()"', true); ?>
+          <?php echo zen_draw_pull_down_menu('dropdown', $dropdown_list_array, $_SESSION['dropdown'], 'onchange="updateForm()"', false); ?>
       </fieldset>
       <?php
         }
