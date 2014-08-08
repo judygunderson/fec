@@ -37,8 +37,6 @@ if ($zc150) { // continue Zen Cart 1.5.0
   $db->Execute("DELETE FROM " . TABLE_ADMIN_PAGES . " WHERE page_key = 'configFastandEasyCheckout' LIMIT 1;");
   // add configuration menu
   if (!zen_page_key_exists('configFastandEasyCheckout')) {
-    $configuration = $db->Execute("SELECT configuration_group_id FROM " . TABLE_CONFIGURATION . " WHERE configuration_key = 'FAST_AND_EASY_CHECKOUT_VERSION' LIMIT 1;");
-    $configuration_group_id = $configuration->fields['configuration_group_id'];
     if ((int)$configuration_group_id > 0) {
       zen_register_admin_page('configFastandEasyCheckout',
                               'BOX_CONFIGURATION_FEC', 
