@@ -145,7 +145,7 @@
 
                                     <?php if ($flag_show_pulldown_states == true) { ?> 
                                         id="fec-state-2-field"
-                                    <? } ?>
+                                    <?php } ?>
 
                                 >
                                     <label class="inputLabel" for="state" id="stateLabel"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stText">' . ENTRY_STATE_TEXT . '</span>'; ?></label>
@@ -297,7 +297,7 @@
 
                                     <?php if ($flag_show_pulldown_states == true) { ?> 
                                         id="fec-state-2-field-shipping"
-                                    <? } ?>
+                                    <?php } ?>
 
                                 >
                                     <label class="inputLabel" for="state" id="stateLabelShipping"><?php echo ENTRY_STATE; ?> <?php if (zen_not_null(ENTRY_STATE_TEXT)) echo '<span class="alert" id="stTextShipping">' . ENTRY_STATE_TEXT . '</span>'; ?></label>

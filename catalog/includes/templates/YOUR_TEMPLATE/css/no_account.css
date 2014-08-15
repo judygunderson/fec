@@ -9,11 +9,11 @@
 
 .fec-cl-left,
 .fec-cl-right {
-    margin-top: 3px
+    margin-top: 3px;
 }
 
 .fec-cl-right .fec-cl-right {
-    width: 100%
+    width: 100%;
 }
 
 
@@ -23,13 +23,13 @@
     padding-left: 0;
     padding-right: 0;
     padding-top: 16px;
-    width: 63.5102%
+    width: 100%;
 }
 
 #createAcctDefaultLoginLink {
 	font-size: 12px;
 	margin: 0 0 30px;
-	padding: 0
+	padding: 0;
 }
 
 

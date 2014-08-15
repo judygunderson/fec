@@ -174,7 +174,7 @@
 	}
 
 	function cleanConfigurationTab($str) {
-		return strtolower(ereg_replace("[^A-Za-z0-9]", "", $str));
+		return strtolower(preg_match("/[^A-Za-z0-9]/", "", $str));
 	}
 ?>
 <!doctype html>

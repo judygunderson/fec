@@ -27,7 +27,7 @@
 
     <?php if ($messageStack->size('login') > 0) echo $messageStack->output('login'); ?>
     
-    <?php if (FEC_EASY_SIGNUP_STATUS == 'true') { ?>
+    <?php if (FEC_STATUS=='true' || FEC_EASY_SIGNUP_STATUS == 'true') { ?>
       <!-- BOF SHOPPING CART -->
       <?php
         if ($fec_order_total_enabled) {

@@ -57,7 +57,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
       $messageStack->add('login', TEXT_LOGIN_BANNED);
     } else {
       // Check that password is good
-      if (FEC_MASTER_PASSWORD == 'true') {
+      if (FEC_MASTER_PASSWORD == 'true' && version_compare(PROJECT_VERSION_MAJOR.".".PROJECT_VERSION_MINOR, "1.5.0") >= 0) {
         // *** start Encrypted Master Password by stagebrace ***
         $get_admin_query = "SELECT admin_id, admin_pass, admin_profile
                             FROM " . TABLE_ADMIN . "
