@@ -37,6 +37,7 @@ define('TABLE_HEADING_BILLING_ADDRESS', 'Billing Address');
 define('TABLE_HEADING_SHIPPING_ADDRESS', 'Shipping Address');
 define('TABLE_HEADING_SHOPPING_CART', 'Shopping Cart Contents');
 define('TABLE_HEADING_PRIVACY_CONDITIONS', '<span class="privacyconditions">Privacy Statement</span>');
+define('TABLE_ENTRY_REFERRAL_DETAILS', 'Referral Code:');
 define('TEXT_PRIVACY_CONDITIONS_DESCRIPTION', '<span class="privacydescription">Please acknowledge you agree with our privacy statement by ticking the following box. The privacy statement can be read</span> <a href="' . zen_href_link(FILENAME_PRIVACY, '', 'SSL') . '"><span class="pseudolink">here</span></a>.');
 define('TEXT_PRIVACY_CONDITIONS_CONFIRM', '<span class="privacyagree">I have read and agreed to your privacy statement.</span>');
 
