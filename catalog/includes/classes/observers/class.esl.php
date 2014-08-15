@@ -33,10 +33,10 @@ class ESLObserver extends base
 	}
 	
 	function update(&$class, $eventID, $paramsArray) {
-    if (FEC_EASY_SIGNUP_STATUS == 'true') {
-      // redirect to ESL
-      zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
-    }
+      if (FEC_EASY_SIGNUP_STATUS == 'true') {
+        // redirect to ESL
+        zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
+      }
 	}
 }
 // eof
