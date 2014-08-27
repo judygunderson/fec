@@ -393,7 +393,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'process')) {
           $zone_shipping = $db->Execute($zone_query);
 
           //look for an exact match on zone ISO code
-          $found_exact_iso_match_shipping = ($zone->RecordCount() == 1);
+          $found_exact_iso_match_shipping = ($zone_shipping->RecordCount() == 1);
           if ($zone_shipping->RecordCount() > 1) {
             while (!$zone_shipping->EOF && !$found_exact_iso_match_shipping) {
               if (strtoupper($zone->fields['zone_code']) == strtoupper($state_shipping) ) {
