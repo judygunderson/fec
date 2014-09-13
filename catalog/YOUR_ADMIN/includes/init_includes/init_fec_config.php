@@ -3,7 +3,7 @@
     die('Illegal Access');
   }   
  
- $module_constant = 'FEAC_VERSION';
+ $module_constant = 'FAST_AND_EASY_CHECKOUT_VERSION';
  $module_installer_directory =  DIR_FS_ADMIN.'includes/installers/fec';
  $module_name = "Fast and Easy Checkout"; 
 
