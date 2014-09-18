@@ -17,6 +17,7 @@ $loaders[] = array('conditions' => array('pages' => array(FILENAME_CREATE_ACCOUN
                       'jquery/jquery_form_check.php' => 4										
                     ),
                     'css_files' => array(
-                      'fec_global.css' => 1
+                      'fec_global.css' => 1,
+                      'auto_loaders/create_account_overrides.css' => 2
                     )
 								);  
