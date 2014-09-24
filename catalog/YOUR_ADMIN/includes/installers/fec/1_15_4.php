@@ -1,0 +1,3 @@
+<?php
+
+//fix installer bug

@@ -9,9 +9,9 @@
 
  
  //Just change the stuff above... Nothing down here should need to change
- if(defined('FEAC_VERSION')) 
+ if(defined('FAST_AND_EASY_CHECKOUT_VERSION')) 
      { 
-        $current_version =  FEAC_VERSION; 
+        $current_version =  FAST_AND_EASY_CHECKOUT_VERSION; 
      } 
      else { 
         $current_version = "0.0.0"; 
