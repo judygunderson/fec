@@ -1,4 +1,0 @@
-boilerplate
-===========
-
-Basic site boilerplate

@@ -14,6 +14,13 @@ $zco_notifier->notify('NOTIFY_HEADER_START_CHECKOUT_CONFIRMATION');
 $zco_notifier->notify('NOTIFY_HEADER_START_FEC_CONFIRMATION');
 require_once(DIR_WS_CLASSES . 'http_client.php');
 $messageStack->reset();
+
+    $flag_disable_left = (FEC_LEFT_COLUMN_STATUS == 'false' ? true : false);
+    $flag_disable_right = (FEC_RIGHT_COLUMN_STATUS == 'false' ? true : false);
+    $flag_disable_header = (FEC_HEADER_STATUS == 'false' ? true : false);
+    $flag_disable_footer = (FEC_FOOTER_STATUS == 'false' ? true : false);
+
+
 // if there is nothing in the customers cart, redirect them to the shopping cart page
 if ($_SESSION['cart']->count_contents() <= 0) {
     zen_redirect(zen_href_link(FILENAME_TIME_OUT));

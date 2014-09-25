@@ -29,6 +29,11 @@
   $total_weight = $_SESSION['cart']->show_weight();
   $total_count = $_SESSION['cart']->count_contents();
 
+  $flag_disable_left = (FEC_LEFT_COLUMN_STATUS == 'false' ? true : false);
+  $flag_disable_right = (FEC_RIGHT_COLUMN_STATUS == 'false' ? true : false);
+  $flag_disable_header = (FEC_HEADER_STATUS == 'false' ? true : false);
+  $flag_disable_footer = (FEC_FOOTER_STATUS == 'false' ? true : false);
+  
   if (FEC_ONE_PAGE == 'true') {
     $checkout_confirmation = FILENAME_FEC_CONFIRMATION;
   } else {
