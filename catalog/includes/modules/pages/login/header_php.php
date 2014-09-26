@@ -27,6 +27,11 @@ if (isset($_SESSION['customer_id']) and $_SESSION['customer_id'] != '') {
 require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 include(DIR_WS_MODULES . zen_get_module_directory('fec_create_account.php'));
 
+    $flag_disable_left = (FEC_LEFT_COLUMN_STATUS == 'false' ? true : false);
+    $flag_disable_right = (FEC_RIGHT_COLUMN_STATUS == 'false' ? true : false);
+    $flag_disable_header = (FEC_HEADER_STATUS == 'false' ? true : false);
+    $flag_disable_footer = (FEC_FOOTER_STATUS == 'false' ? true : false);
+
 $error = false;
 if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
   $email_address = zen_db_prepare_input($_POST['email_address']);
