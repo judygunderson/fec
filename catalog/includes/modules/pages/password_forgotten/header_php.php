@@ -1,7 +1,7 @@
 <?php
 /**
  * Password Forgotten
- * 
+ *
  * @package page
  * @copyright Copyright 2003-2006 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -12,16 +12,23 @@
 // This should be first line of the script:
 $zco_notifier->notify('NOTIFY_HEADER_START_PASSWORD_FORGOTTEN');
 
+//BOF Reset Password URL
+if(defined('RESET_PASSWORD_URL_TYPE') && RESET_PASSWORD_URL_TYPE == 'Password Reset URL') {
+  define('TEXT_MAIN', PASSWORD_RESET_PAGE_TEXT);
+}
+//EOF Reset Password URL
 
 require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
+
 
 // remove from snapshot
 $_SESSION['navigation']->remove_current_page();
 
+
 if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
   $email_address = zen_db_prepare_input($_POST['email_address']);
 
-  $check_customer_query = "SELECT customers_firstname, customers_lastname, customers_password, customers_id 
+  $check_customer_query = "SELECT customers_firstname, customers_lastname, customers_password, customers_id
                            FROM " . TABLE_CUSTOMERS . "
                            WHERE customers_email_address = :emailAddress
                            AND COWOA_account != 1";
@@ -31,7 +38,31 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
 
   if ($check_customer->RecordCount() > 0) {
 
-    $new_password = zen_create_random_value(ENTRY_PASSWORD_MIN_LENGTH);
+    //BOF Reset Password URL
+    if(defined('RESET_PASSWORD_URL_TYPE') && RESET_PASSWORD_URL_TYPE == 'Password Reset URL') {
+      define(TOKEN_LENGTH, 24);
+      $token = zen_create_random_value(TOKEN_LENGTH);
+      $sql = "UPDATE " . TABLE_CUSTOMERS . "
+            SET password_reset_token = :token
+            WHERE customers_id = :customersID";
+
+    $sql = $db->bindVars($sql, ':token', $token, 'string');
+    $sql = $db->bindVars($sql, ':customersID', $check_customer->fields['customers_id'], 'integer');
+    $db->Execute($sql);
+
+    $html_msg['EMAIL_CUSTOMERS_NAME'] = $check_customer->fields['customers_firstname'] . ' ' . $check_customer->fields['customers_lastname'];
+    $html_msg['EMAIL_MESSAGE_HTML'] = sprintf(PASSWORD_RESET_EMAIL_BODY, $token);
+
+    // send the email
+    zen_mail($check_customer->fields['customers_firstname'] . ' ' . $check_customer->fields['customers_lastname'], $email_address, PASSWORD_RESET_EMAIL_SUBJECT, sprintf(PASSWORD_RESET_EMAIL_BODY, $token), STORE_NAME, EMAIL_FROM, $html_msg,'password_forgotten');
+
+    $messageStack->add_session('login', PASSWORD_RESET_SUCCESS_PASSWORD_SENT, 'success');
+
+     }
+     else {
+     //EOF Reset Password URL
+
+    $new_password = zen_create_random_value( (ENTRY_PASSWORD_MIN_LENGTH > 0 ? ENTRY_PASSWORD_MIN_LENGTH : 5) );
     $crypted_password = zen_encrypt_password($new_password);
 
     $sql = "UPDATE " . TABLE_CUSTOMERS . "
@@ -39,7 +70,7 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
             WHERE customers_id = :customersID";
 
     $sql = $db->bindVars($sql, ':password', $crypted_password, 'string');
-    $sql = $db->bindVars($sql, ':customersID', $check_customer->fields['customers_id'], 'integer');    
+    $sql = $db->bindVars($sql, ':customersID', $check_customer->fields['customers_id'], 'integer');
     $db->Execute($sql);
 
     $html_msg['EMAIL_CUSTOMERS_NAME'] = $check_customer->fields['customers_firstname'] . ' ' . $check_customer->fields['customers_lastname'];
@@ -49,6 +80,10 @@ if (isset($_GET['action']) && ($_GET['action'] == 'process')) {
     zen_mail($check_customer->fields['customers_firstname'] . ' ' . $check_customer->fields['customers_lastname'], $email_address, EMAIL_PASSWORD_REMINDER_SUBJECT, sprintf(EMAIL_PASSWORD_REMINDER_BODY, $new_password), STORE_NAME, EMAIL_FROM, $html_msg,'password_forgotten');
 
     $messageStack->add_session('login', SUCCESS_PASSWORD_SENT, 'success');
+    
+    //BOF Reset Password URL
+     }
+    //EOF Reset Password URL
 
     zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
   } else {
