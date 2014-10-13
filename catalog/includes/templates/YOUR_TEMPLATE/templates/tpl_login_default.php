@@ -36,7 +36,7 @@
       ?>
       
       <!-- EOF SHOPPING CART -->
-      <div id="easySignUp" class="fec-easy-sing-up">
+      <div id="easySignUp" class="fec-easy-sign-up">
           
           <div id="loginColumnLeft" class="fec-col-left">
           <!-- BEGIN CHECKOUT WITHOUT ACCOUNT -->

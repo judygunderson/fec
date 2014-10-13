@@ -14,7 +14,7 @@
  */
 ?>
 
-<!-- begin/easy-sing-up -->
+<!-- begin/easy-sign-up -->
 
 <!-- begin/collum left -->
 <div class="fec-cl-left">

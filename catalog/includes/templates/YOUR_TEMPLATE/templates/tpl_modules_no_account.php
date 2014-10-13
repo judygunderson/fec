@@ -20,9 +20,9 @@
 <?php 
     if (FEC_NOACCOUNT_ONLY_SWITCH != "true") {
 ?>
-    <div class="fec-easy-sing-up">
+    <div class="fec-easy-sign-up">
 <?php } else { ?>
-    <div class="fec-easy-sing-up no-account-only">
+    <div class="fec-easy-sign-up no-account-only">
 <?php } ?>
 
     <div class="fec-col-left">
