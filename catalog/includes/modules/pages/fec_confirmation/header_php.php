@@ -240,6 +240,25 @@ if ($messageStack->size('checkout_payment') > 0) {
 $flagAnyOutOfStock = false;
 $stock_check = array();
 if (STOCK_CHECK == 'true') {
+  // bof numinix products variants  - check stock
+  if( NMX_PRODUCT_VARIANTS_STATUS == 'true' ){
+    // get option_id/option_value_id array
+    $products_attributes = array();
+    for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
+      foreach( $order->products[$i]['attributes'] as $products_attribute ){
+        $products_attributes[$products_attribute['option_id']] = $products_attribute['value_id'];
+      }
+
+      $stockUpdate = zen_get_products_stock($order->products[$i]['id'], $products_attributes);
+      $stockAvailable = is_array($stockUpdate) ? $stockUpdate['quantity'] : $stockUpdate;
+      if($stockAvailable - $order->products[$i]['qty'] < 0) {
+        $flagAnyOutOfStock = true;
+        $flagStockCheck = STOCK_MARK_PRODUCT_OUT_OF_STOCK;
+      }
+    }
+  }
+  // eof numinix products variants  - check stock
+  
   for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
     if ($stock_check[$i] = zen_check_stock($order->products[$i]['id'], $order->products[$i]['qty'])) {
       $flagAnyOutOfStock = true;
