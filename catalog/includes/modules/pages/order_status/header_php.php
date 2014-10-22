@@ -25,7 +25,7 @@ if(!$errorInvalidID && !$errorInvalidEmail)
                           FROM   " . TABLE_ORDERS . "
                           WHERE  orders_id = :ordersID";
 
-  $customer_info_query = $db->bindVars($customer_info_query, ':ordersID', $_POST['order_id'], 'integer');
+  $customer_info_query = $db->bindVars($customer_info_query, ':ordersID', $_REQUEST['order_id'], 'integer');
   $customer_info = $db->Execute($customer_info_query);
 
   if (isset($query_email_address) && $customer_info->fields['customers_email_address'] != $query_email_address && $customer_info->fields['customers_email_address'] != $query_email_address . '.')
@@ -41,7 +41,7 @@ if(!$errorInvalidID && !$errorInvalidEmail)
                        AND        osh.customer_notified >= 0
                        ORDER BY   osh.date_added";
 
-    $statuses_query = $db->bindVars($statuses_query, ':ordersID', $_POST['order_id'], 'integer');
+    $statuses_query = $db->bindVars($statuses_query, ':ordersID', $_REQUEST['order_id'], 'integer');
     $statuses_query = $db->bindVars($statuses_query, ':languagesID', $_SESSION['languages_id'], 'integer');
     $statuses = $db->Execute($statuses_query);
 
@@ -55,7 +55,7 @@ if(!$errorInvalidID && !$errorInvalidEmail)
     }
 
     require(DIR_WS_CLASSES . 'order.php');
-    $order = new order($_POST['order_id']);
+    $order = new order($_REQUEST['order_id']);
   }
 }
 
@@ -66,4 +66,3 @@ $breadcrumb->add(NAVBAR_TITLE_1, zen_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 
 // This should be last line of the script:
 $zco_notifier->notify('NOTIFY_HEADER_END_ACCOUNT_HISTORY_INFO');
-?>
