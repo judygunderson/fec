@@ -9,7 +9,7 @@
 */                                             
 $loaders[] = array('conditions' => array('pages' => array(FILENAME_CHECKOUT)),
 										'jscript_files' => array(
-										  'jquery/jquery-1.10.2.min.js' => 1,
+										  'jquery/jquery-1.11.0.min.js' => 1,
 										  'jquery/jquery-migrate-1.2.1.min.js' => 2,
                       'jquery/jquery_checkout.php' => 5										
                     ),

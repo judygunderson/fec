@@ -1,0 +1,2 @@
+<?php
+//upgraded JS files
