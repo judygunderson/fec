@@ -26,8 +26,10 @@ $db->Execute("REPLACE INTO " . TABLE_CONFIGURATION . " (configuration_title, con
 ('Automatic LogOff for No Account', 'FEC_NOACCOUNT_LOGOFF', 'true', 'Automatically logoff customers without accounts?', " . $configuration_group_id . ", 33, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 ('Free/Virtual Checkout', 'FEC_FREE_VIRTUAL_CHECKOUT', 'false', 'Only require name and email address for products that are both free and virtual?', " . $configuration_group_id . ", 34, NOW(), NOW(), NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),');");
 
-if (!nmx_check_field(TABLE_CUSTOMERS, 'COWOA_account')) $db->Execute("ALTER TABLE " . TABLE_CUSTOMERS . " ADD COWOA_account tinyint(1) NOT NULL default 0;");
-if (!nmx_check_field(TABLE_ORDERS, 'COWOA_order')) $db->Execute("ALTER TABLE " . TABLE_ORDERS . " ADD COWOA_order tinyint(1) NOT NULL default 0;");
+global $sniffer;
+if (!$sniffer->field_exists(TABLE_CUSTOMERS, 'COWOA_account'))  $db->Execute("ALTER TABLE " . TABLE_CUSTOMERS . " ADD COWOA_account tinyint(1) NOT NULL default 0;");
+if (!$sniffer->field_exists(TABLE_ORDERS, 'COWOA_order')) $db->Execute("ALTER TABLE " . TABLE_ORDERS . " ADD COWOA_order tinyint(1) NOT NULL default 0;");
+
 $db->Execute("INSERT IGNORE INTO " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) VALUES ('Telephone Number', 'ACCOUNT_TELEPHONE', 'true', 'Display telephone number field during account creation and with account information', '5', '8', 'zen_cfg_select_option(array(\'true\', \'false\'), ', now());");
 $db->Execute("INSERT IGNORE INTO " . TABLE_QUERY_BUILDER . " (query_id, query_category, query_name, query_description, query_string) VALUES ('', 'email,newsletters', 'Permanent Account Holders Only', 'Send email only to permanent account holders ', 'select customers_email_address, customers_firstname, customers_lastname from TABLE_CUSTOMERS where COWOA_account != 1 order by customers_lastname, customers_firstname, customers_email_address');");
 

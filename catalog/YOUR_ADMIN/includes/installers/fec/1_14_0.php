@@ -1,5 +1,7 @@
 <?php
-	if (!nmx_check_field(TABLE_CONFIGURATION, 'configuration_tab')) $db->Execute("ALTER TABLE " . TABLE_CONFIGURATION . " ADD COLUMN configuration_tab varchar(32) NOT NULL DEFAULT 'General';");
+
+global $sniffer;
+if (!$sniffer->field_exists(TABLE_CONFIGURATION, 'configuration_tab')) $db->Execute("ALTER TABLE " . TABLE_CONFIGURATION . " ADD COLUMN configuration_tab varchar(32) NOT NULL DEFAULT 'General';");
       
   $db->Execute("UPDATE " . TABLE_CONFIGURATION . " 
 		SET configuration_tab = 'Layout' 
