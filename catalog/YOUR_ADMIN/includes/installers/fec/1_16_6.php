@@ -1,0 +1,3 @@
+<?php
+
+// fixed uninstaller script
